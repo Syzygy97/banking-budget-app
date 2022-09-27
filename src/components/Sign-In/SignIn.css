@@ -18,3 +18,31 @@
   display: flex;
   gap: 10px;
 }
+.sign-in {
+  border-radius: 20px;
+  box-shadow: 5px 5px 5px #000;
+  height: 450px;
+  margin-top: 50px;
+  max-width: 40%;
+  width: 100%;
+  background-image: linear-gradient(rgb(251, 133, 0), rgb(241, 174, 97));
+}
+
+.sign-div {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.sign-btn {
+  padding: 1rem 1.5rem;
+  font-size: 1.5rem;
+  border-radius: 8px;
+  border: none;
+  background-color: #182747;
+  color: #fff;
+  text-transform: uppercase;
+  cursor: pointer;
+}

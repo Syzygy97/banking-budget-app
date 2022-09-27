@@ -1,0 +1,46 @@
+.nav-bar {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  background-color: #fd841f;
+  color: #fff;
+  padding: 1rem 1.5rem;
+  padding-left: 18rem;
+}
+
+.others-navbar {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  text-transform: uppercase;
+  gap: 5rem;
+  margin-right: 3.5rem;
+  font-size: 1.8rem;
+  letter-spacing: 2.5px;
+}
+
+.list-navbar:hover {
+  color: #182747;
+  cursor: pointer;
+}
+
+.admin-button {
+  font-size: 1.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  padding: 1rem 1.5rem;
+  background-color: gray;
+  color: white;
+}
+
+.admin-button:hover {
+  background-color: #182747;
+}
+
+.logo {
+  height: 5rem;
+  margin-right: 78rem;
+}

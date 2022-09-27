@@ -1,0 +1,9 @@
+.main-page {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin: 10rem auto;
+  max-width: 80%;
+  width: 100%;
+  gap: 3rem;
+}
