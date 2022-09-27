@@ -2,8 +2,10 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
-  margin: 10rem auto;
+  margin: 0 auto;
   max-width: 80%;
   width: 100%;
+  height: 93vh;
+  overflow-y: hidden;
   gap: 3rem;
 }
