@@ -1,0 +1,47 @@
+.title-page {
+  font-size: 7rem;
+  color: #fff;
+  /* margin-top: 11rem;
+  /* transform: translateX(10%); */
+}
+
+.title-page1 {
+  font-size: 7rem;
+  color: #fd841f;
+  font-style: italic;
+  padding-top: 1.5rem;
+}
+
+.title-page2 {
+  font-size: 2.5rem;
+  color: #fff;
+  letter-spacing: 2.5px;
+  line-height: 3.5rem;
+  padding-top: 3rem;
+}
+
+.download-btn {
+  border: none;
+  font-size: 2.5rem;
+  border-radius: 8px;
+  padding: 2rem 2.5rem;
+  margin-top: 3rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  background-color: #fd841f;
+  color: #fff;
+  cursor: pointer;
+}
+
+.download-icon {
+  height: 3.5rem;
+  margin-left: 1rem;
+  color: #fff;
+}
+
+.download-btn:hover {
+  /* border: solid #fff 1.5px; */
+  color: black;
+}
+
