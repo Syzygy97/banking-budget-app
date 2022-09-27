@@ -1,0 +1,13 @@
+.labelName,
+.inputs {
+  margin-bottom: 0.75em;
+}
+
+.inputs > input {
+  width: 50ch;
+  border: none;
+  border-bottom: 2px solid black;
+  height: 1.5rem;
+  padding: 0.2rem 0.5rem;
+  outline: none;
+}

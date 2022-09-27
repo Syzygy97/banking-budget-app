@@ -1,0 +1,42 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.signUpPage {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+.signUpBg,
+.signUpInputsContainer {
+  border-radius: 50px;
+  border: 2px solid black;
+}
+.signUpBg {
+  width: 60%;
+  height: 100%;
+  background-image: url(../../assets/plantWithMoney.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-x: 70%;
+}
+.signUpInputsContainer {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.signUpInputsContainer > img {
+  scale: 0.6;
+}
+
+.signUpInputs {
+  margin-bottom: 1em;
+}
