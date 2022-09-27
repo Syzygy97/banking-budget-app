@@ -1,9 +1,9 @@
-import SignIn from "./components/Sign-In/SignIn";
+// import SignIn from "./components/Sign-In/SignIn";
 import SignUpPage from "./pages/Sign-Up-Page/SignUpPage";
 
-import NavBar from "./components/NavBar/NavBar";
+import NavBar from "./components/NavBar/navBar";
 import TitlePage from "./components/TitlePage/TitlePage";
-import SignIn from "./components/Sign-In/SignIn";
+import SignIn from "./components/Sign-In/signIn"
 import "./App.css";
 
 function App() {
