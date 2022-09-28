@@ -1,20 +1,22 @@
-// import SignIn from "./components/Sign-In/SignIn";
 import SignUpPage from "./pages/Sign-Up-Page/SignUpPage";
-
-import NavBar from "./components/NavBar/navBar";
+import NavBar from "./components/NavBar/NavBar";
 import TitlePage from "./pages/TitlePage/TitlePage";
-import SignIn from "./components/Sign-In/signIn";
+import SignIn from "./components/Sign-In/SignIn";
 import "./App.css";
+import Dashboard from "./pages/Dashboard/DashboardPage";
 
 function App() {
   return (
-    <div>
-      <NavBar></NavBar>
-      <div className="main-page">
-        <TitlePage></TitlePage>
-        <SignIn></SignIn>
-      </div>
-    </div>
+    // <div>
+    //   <NavBar />
+    //   <div className="main-page">
+    //     <TitlePage />
+    //     <SignIn />
+    //   </div>
+    // </div>
+    // <SignIn />
+    <SignUpPage />
+    // <Dashboard />
   );
 }
 
