@@ -20,7 +20,6 @@ export default function SignIn() {
       <img src={logo}></img>
       <div className="userAccessButtons">
         <Buttons name="SIGN UP" onClick={navigateToSignUpPage} />
-        <Buttons name="ADMIN SIGN IN" />
       </div>
       <div>
         <label>Username</label>
