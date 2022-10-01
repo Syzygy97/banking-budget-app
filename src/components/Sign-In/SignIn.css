@@ -9,6 +9,7 @@
 }
 .signInComponent > img {
   scale: 0.7;
+  margin-bottom: 2em;
 }
 .password {
   margin-bottom: 1.75em;
@@ -44,5 +45,10 @@
   background-color: #182747;
   color: #fff;
   text-transform: uppercase;
+  cursor: pointer;
+}
+
+.signInBtn {
+  background-color: blue;
   cursor: pointer;
 }

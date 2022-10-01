@@ -1,9 +1,4 @@
-.labelName,
-.inputs {
-  margin-bottom: 0.75em;
-}
-
-.inputs > input {
+input {
   width: 50ch;
   border: none;
   border-bottom: 2px solid black;

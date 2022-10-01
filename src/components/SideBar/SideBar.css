@@ -1,0 +1,21 @@
+.sideBar {
+  width: 15%;
+  height: 100%;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 2rem;
+}
+.sideBar > img {
+  scale: 0.6;
+}
+.sideBarList {
+  list-style: none;
+  line-height: 2em;
+  margin-left: 1em;
+}
+.settings {
+  font-size: 2em;
+  margin: 0 0 0.5em 0.5em;
+}
