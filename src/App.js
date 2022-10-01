@@ -1,22 +1,22 @@
+import "./App.css";
 import SignUpPage from "./pages/Sign-Up-Page/SignUpPage";
-import NavBar from "./components/NavBar/NavBar";
 import TitlePage from "./pages/TitlePage/TitlePage";
 import SignIn from "./components/Sign-In/SignIn";
-import "./App.css";
 import Dashboard from "./pages/Dashboard/DashboardPage";
+import { Route, Routes } from "react-router-dom";
+import NotFoundPage from "./pages/Not-Found-Page/NotFoundPage";
 
 function App() {
   return (
-    // <div>
-    //   <NavBar />
-    //   <div className="main-page">
-    //     <TitlePage />
-    //     <SignIn />
-    //   </div>
-    // </div>
-    // <SignIn />
-    <SignUpPage />
-    // <Dashboard />
+    <>
+      <Routes>
+        <Route path="/" element={<TitlePage />} />
+        <Route path="/signIn" element={<SignIn />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/signUp" element={<SignUpPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </>
   );
 }
 
