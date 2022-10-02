@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 export default function SignIn() {
   const navigate = useNavigate();
   function navigateToDashboard() {
-    navigate("dashboard");
+    navigate("dashboard/home");
   }
 
   function navigateToSignUpPage() {
@@ -17,7 +17,7 @@ export default function SignIn() {
 
   return (
     <div className="signInComponent">
-      <img src={logo}></img>
+      <img src={logo} alt="logo"></img>
       <div className="userAccessButtons">
         <Buttons name="SIGN UP" onClick={navigateToSignUpPage} />
       </div>

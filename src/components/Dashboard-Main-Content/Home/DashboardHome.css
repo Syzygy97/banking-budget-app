@@ -1,4 +1,8 @@
-.transactionPage {
+.dashboardHome {
+  width: 60%;
+  height: 100%;
+}
+.dashboardHome {
   width: 100%;
   height: 100vh;
   display: grid;
@@ -7,12 +11,12 @@
     "deposit withdraw";
   gap: 1rem;
 }
-.transactionPage h1,
-.transactionPage h3 {
+.dashboardHome h1,
+.dashboardHome h3 {
   text-align: center;
   margin-top: 1rem;
 }
-.transactionPage h3 {
+.dashboardHome h3 {
   margin-top: 0.5rem;
 }
 .lineGraph,

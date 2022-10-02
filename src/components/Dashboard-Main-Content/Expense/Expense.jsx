@@ -50,7 +50,7 @@ function Expense() {
           <input
             id="expense"
             name="expense"
-            type="text"
+            type="number"
             value={expense}
             className="user-input"
             onChange={(e) => setExpense(e.target.value)}
@@ -78,22 +78,24 @@ function Expense() {
         <h2>Particular</h2>
         <h2></h2>
       </div>
-      {expenses.map((expense) => (
-        <React.Fragment key={expense.id}>
-          <div className="user-expense-container">
-            <h2 className="user-expense-amount">₱{expense.amount}.00</h2>
-            <h2 className="user-expense-amount">{expense.title}</h2>
-            <div className="user-expense-delete-container">
-              <button
-                className="user-expense-delete"
-                onClick={() => handleDelete(expense)}
-              >
-                delete
-              </button>
+      <div className="expense-list">
+        {expenses.map((expense) => (
+          <React.Fragment key={expense.id}>
+            <div className="user-expense-container">
+              <h2 className="user-expense-amount">₱{expense.amount}.00</h2>
+              <h2 className="user-expense-amount">{expense.title}</h2>
+              <div className="user-expense-delete-container">
+                <button
+                  className="user-expense-delete"
+                  onClick={() => handleDelete(expense)}
+                >
+                  delete
+                </button>
+              </div>
             </div>
-          </div>
-        </React.Fragment>
-      ))}
+          </React.Fragment>
+        ))}
+      </div>
     </div>
   );
 }

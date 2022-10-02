@@ -10,7 +10,7 @@ export default function SignUpPage() {
     <div className="signUpPage">
       <section className="signUpBg"></section>
       <section className="signUpInputsContainer">
-        <img src={logo}></img>
+        <img src={logo} alt="logo"></img>
         <form className="signUpInputs">
           <div>
             <label>First Name</label>
