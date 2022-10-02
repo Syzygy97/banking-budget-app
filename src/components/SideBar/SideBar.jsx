@@ -1,12 +1,16 @@
 import React from "react";
 import "./SideBar.css";
 import logo from "../../assets/yourLogoHere.png";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 export default function SideBar() {
+  const navigate = useNavigate();
+  function navigateToLandingPage() {
+    navigate("/");
+  }
   return (
     <nav className="sideBar">
-      <img src={logo} alt="logo" />
+      <img src={logo} alt="logo" onClick={navigateToLandingPage} />
       <ul className="sideBarList">
         <li>
           <NavLink to="home">Home</NavLink>

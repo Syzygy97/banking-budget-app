@@ -10,7 +10,7 @@ export default function Withdraw() {
         <h1>Withdraw money from your account</h1>
         <Transactions />
       </div>
-      <WithdrawHistory />
+      <WithdrawHistory className="withdraw-history" />
     </>
   );
 }

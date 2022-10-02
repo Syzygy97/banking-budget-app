@@ -11,6 +11,16 @@
     "deposit withdraw";
   gap: 1rem;
 }
+.lineGraph {
+  grid-area: lineGraph;
+  height: 60vh;
+}
+.depositHistoryList {
+  grid-area: deposit;
+}
+.withdrawHistoryList {
+  grid-area: withdraw;
+}
 .dashboardHome h1,
 .dashboardHome h3 {
   text-align: center;
@@ -28,14 +38,4 @@
 .depositHistoryList,
 .withdrawHistoryList {
   height: calc(40vh - 1rem);
-}
-.lineGraph {
-  grid-area: lineGraph;
-  height: 60vh;
-}
-.depositHistoryList {
-  grid-area: deposit;
-}
-.withdrawHistoryList {
-  grid-area: withdraw;
 }

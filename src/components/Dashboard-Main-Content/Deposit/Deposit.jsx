@@ -10,7 +10,7 @@ export default function Deposit() {
         <h1>Add money to your account</h1>
         <Transactions />
       </div>
-      <DepositHistory />
+      <DepositHistory className="deposit-history" />
     </>
   );
 }
