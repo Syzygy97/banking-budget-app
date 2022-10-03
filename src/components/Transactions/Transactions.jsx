@@ -1,6 +1,5 @@
 import React from "react";
 import Buttons from "../Buttons/Buttons";
-import DepositHistory from "../History/Deposit History/DepositHistory";
 import Inputs from "../Inputs/Inputs";
 import Notes from "../Notes-Input/Notes";
 import "./Transactions.css";
