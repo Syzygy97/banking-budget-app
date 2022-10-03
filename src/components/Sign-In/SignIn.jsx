@@ -5,9 +5,18 @@ import Inputs from "../Inputs/Inputs";
 import Buttons from "../Buttons/Buttons";
 import { useNavigate } from "react-router-dom";
 
-export default function SignIn() {
+export default function SignIn({ setUser }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // if (!username || !password) return;
+    setUser({ username: username, password: password });
+    navigate("dashboard/home");
+    console.log(username, password);
+  };
 
   const handleUsername = (e) => {
     setUsername(e.target.value);
@@ -15,8 +24,6 @@ export default function SignIn() {
   const handlePassword = (e) => {
     setPassword(e.target.value);
   };
-
-  const navigate = useNavigate();
 
   function navigateToDashboard() {
     navigate("dashboard/home");
@@ -27,7 +34,7 @@ export default function SignIn() {
   }
 
   return (
-    <form className="signInComponent">
+    <form onSubmit={handleSubmit} className="signInComponent">
       <img src={logo} alt="logo"></img>
       <div className="userAccessButtons">
         <Buttons name="SIGN UP" onClick={navigateToSignUpPage} />
@@ -52,8 +59,9 @@ export default function SignIn() {
       </div>
       <Buttons
         className="signInBtn"
+        type="submit"
         name="Sign In"
-        onClick={navigateToDashboard}
+        // onClick={navigateToDashboard}
       />
     </form>
   );

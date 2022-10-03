@@ -3,7 +3,7 @@ import NavBar from "../../components/NavBar/NavBar";
 import SignIn from "../../components/Sign-In/SignIn";
 import "./TitlePage.css";
 
-const TitlePage = () => {
+const TitlePage = ({ setUser }) => {
   return (
     <>
       <NavBar />
@@ -34,7 +34,7 @@ const TitlePage = () => {
             </svg>
           </button>
         </div>
-        <SignIn />
+        <SignIn setUser={setUser} />
       </div>
     </>
   );
