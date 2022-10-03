@@ -1,20 +1,37 @@
 import React from "react";
-import logo from "../../assets/yourLogoHere.png";
 import "./SideBar.css";
+import logo from "../../assets/yourLogoHere.png";
+import { NavLink, useNavigate } from "react-router-dom";
 
 export default function SideBar() {
+  const navigate = useNavigate();
+  function navigateToLandingPage() {
+    navigate("/");
+  }
   return (
-    <div className="sideBar">
-      <img src={logo} />
+    <nav className="sideBar">
+      <img src={logo} alt="logo" onClick={navigateToLandingPage} />
       <ul className="sideBarList">
-        <li>Home</li>
-        <li>Planned Expenses</li>
-        <li>Deposit</li>
-        <li>Withdraw</li>
-        <li>Transfer</li>
-        <li>Profile</li>
+        <li>
+          <NavLink to="home">Home</NavLink>
+        </li>
+        <li>
+          <NavLink to="expenses">Planned Expenses</NavLink>
+        </li>
+        <li>
+          <NavLink to="deposit">Deposit</NavLink>
+        </li>
+        <li>
+          <NavLink to="withdraw">Withdraw</NavLink>
+        </li>
+        <li>
+          <NavLink to="transfer">Transfer</NavLink>
+        </li>
+        <li>
+          <NavLink to="profile">Profile</NavLink>
+        </li>
       </ul>
       <div className="settings">⚙</div>
-    </div>
+    </nav>
   );
 }

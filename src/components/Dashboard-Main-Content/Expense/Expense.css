@@ -2,9 +2,10 @@
   background-image: linear-gradient(to top left, #fd841f, #f98404, #f3950d);
   border-radius: 2rem;
   box-shadow: 5px 5px 5px #000;
-  height: 35vh;
+  height: 100%;
   color: #fff;
-  width: 20vw;
+  width: 60vw;
+  overflow: hidden;
 }
 
 .form-container {
@@ -14,6 +15,7 @@
   padding: 20px;
   font-size: 2rem;
   padding: 1rem 1.5rem;
+  height: 25vh;
 }
 
 .user-input {
@@ -34,4 +36,9 @@
 
 .add-btn:hover {
   color: #fd841f;
+}
+
+.expense-list {
+  height: 75vh;
+  overflow-x: auto;
 }

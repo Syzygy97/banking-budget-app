@@ -1,0 +1,7 @@
+.withdraw-history {
+  height: 50%;
+  border: 2px solid black;
+}
+.withdraw-history > h1 {
+  text-align: center;
+}

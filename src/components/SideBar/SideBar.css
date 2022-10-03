@@ -9,11 +9,15 @@
 }
 .sideBar > img {
   scale: 0.6;
+  cursor: pointer;
 }
 .sideBarList {
   list-style: none;
   line-height: 2em;
   margin-left: 1em;
+}
+.sideBarList > li {
+  cursor: pointer;
 }
 .settings {
   font-size: 2em;

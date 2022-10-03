@@ -4,9 +4,8 @@ import logo from "../../assets/logo.png";
 
 const NavBar = () => {
   return (
-    
     <div className="nav-bar">
-      <img src={logo} className="logo" />
+      <img src={logo} className="logo" alt="logo" />
       <ul className="others-navbar">
         <li className="list-navbar">Support</li>
         <li className="list-navbar">Service</li>
@@ -18,5 +17,3 @@ const NavBar = () => {
 };
 
 export default NavBar;
-
-

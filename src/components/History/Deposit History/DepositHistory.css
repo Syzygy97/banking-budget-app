@@ -1,0 +1,7 @@
+.deposit-history {
+  height: 50%;
+  border: 2px solid black;
+}
+.deposit-history > h1 {
+  text-align: center;
+}
