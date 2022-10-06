@@ -25,44 +25,42 @@ export default function SignIn({ setUser }) {
     setPassword(e.target.value);
   };
 
-  function navigateToDashboard() {
-    navigate("dashboard/home");
-  }
-
   function navigateToSignUpPage() {
     navigate("signUp");
   }
 
   return (
-    <form onSubmit={handleSubmit} className="signInComponent">
+    <div className="sign-in-container">
       <img src={logo} alt="logo"></img>
       <div className="userAccessButtons">
         <Buttons name="SIGN UP" onClick={navigateToSignUpPage} />
       </div>
-      <div className="username">
-        <label>Username</label>
-        <Inputs
-          type="text"
-          placeholder="enter username"
-          value={username}
-          onChange={handleUsername}
+      <form onSubmit={handleSubmit} className="signInComponent">
+        <div className="username">
+          <label>Username</label>
+          <Inputs
+            type="text"
+            placeholder="enter username"
+            value={username}
+            onChange={handleUsername}
+          />
+        </div>
+        <div className="password">
+          <label>Password</label>
+          <Inputs
+            type="password"
+            placeholder="enter password"
+            value={password}
+            onChange={handlePassword}
+          />
+        </div>
+        <Buttons
+          className="signInBtn"
+          type="submit"
+          name="Sign In"
+          // onClick={navigateToDashboard}
         />
-      </div>
-      <div className="password">
-        <label>Password</label>
-        <Inputs
-          type="password"
-          placeholder="enter password"
-          value={password}
-          onChange={handlePassword}
-        />
-      </div>
-      <Buttons
-        className="signInBtn"
-        type="submit"
-        name="Sign In"
-        // onClick={navigateToDashboard}
-      />
-    </form>
+      </form>
+    </div>
   );
 }

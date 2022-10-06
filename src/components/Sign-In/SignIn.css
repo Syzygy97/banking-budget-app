@@ -1,25 +1,37 @@
+.sign-in-container,
 .signInComponent {
-  width: 450px;
-  height: 450px;
-  border: 2px solid black;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.signInComponent > img {
-  scale: 0.7;
+
+.sign-in-container {
+  border: 2px solid black;
+  width: 450px;
+  height: 450px;
+}
+.signInComponent {
+  gap: 1rem;
+}
+.sign-in-container > img {
+  height: 90px;
   margin-bottom: 2em;
 }
+.username,
 .password {
+  display: flex;
   margin-bottom: 1.75em;
+  gap: 0.5rem;
 }
 .userAccessButtons {
-  margin-bottom: 1.5em;
-  display: flex;
-  gap: 10px;
+  margin-bottom: 3em;
 }
-.sign-in {
+.signInBtn {
+  background-color: blue;
+  cursor: pointer;
+}
+/* .sign-in {
   border-radius: 20px;
   box-shadow: 5px 5px 5px #000;
   height: 450px;
@@ -46,9 +58,4 @@
   color: #fff;
   text-transform: uppercase;
   cursor: pointer;
-}
-
-.signInBtn {
-  background-color: blue;
-  cursor: pointer;
-}
+} */

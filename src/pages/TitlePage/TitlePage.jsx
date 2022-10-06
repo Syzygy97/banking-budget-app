@@ -1,7 +1,9 @@
 import React from "react";
+import "./TitlePage.css";
+import { Routes, Route } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
 import SignIn from "../../components/Sign-In/SignIn";
-import "./TitlePage.css";
+import AdminSignIn from "../../components/Admin-Sign-In/AdminSignIn";
 
 const TitlePage = ({ setUser }) => {
   return (
@@ -35,6 +37,14 @@ const TitlePage = ({ setUser }) => {
           </button>
         </div>
         <SignIn setUser={setUser} />
+        {/* <div>
+          <Routes>
+            <Route>
+              <Route index element={<SignIn setUser={setUser} />} />
+              <Route path="/" element={<AdminSignIn />} />
+            </Route>
+          </Routes>
+        </div> */}
       </div>
     </>
   );

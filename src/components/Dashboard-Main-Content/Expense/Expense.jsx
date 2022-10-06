@@ -28,6 +28,7 @@ function Expense() {
       setExpense("");
       setParticular("");
     }
+    console.log(expenses);
   };
 
   const onSubmit = (e) => {
