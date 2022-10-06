@@ -1,0 +1,50 @@
+.admin-page-container,
+.user-label,
+.user-list-container,
+.user-list,
+.user-account-status {
+  display: flex;
+}
+.admin-page-container {
+  width: 100%;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.admin-page-container > h1 {
+  text-align: center;
+  width: 80%;
+  border-bottom: 4px solid black;
+  padding-bottom: 1.5rem;
+}
+.user-list {
+  justify-content: space-between;
+  width: 100%;
+}
+.user-list > div {
+  width: 33.3333%;
+}
+.user-label {
+  width: 60%;
+  padding: 0 4rem;
+}
+.user-label > label {
+  width: 100%;
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+.user-list-container {
+  width: 60%;
+  height: 80%;
+  border: 2px solid black;
+  justify-content: space-between;
+  padding: 3rem 4rem;
+}
+.user-list-container > ul {
+  width: 100%;
+}
+.user-account-status,
+.admin-page-container {
+  gap: 2rem;
+}

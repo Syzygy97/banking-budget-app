@@ -1,9 +1,11 @@
 import React from "react";
+import "./TitlePage.css";
+import { Routes, Route } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
 import SignIn from "../../components/Sign-In/SignIn";
-import "./TitlePage.css";
+import AdminSignIn from "../../components/Admin-Sign-In/AdminSignIn";
 
-const TitlePage = () => {
+const TitlePage = ({ setUser }) => {
   return (
     <>
       <NavBar />
@@ -34,7 +36,15 @@ const TitlePage = () => {
             </svg>
           </button>
         </div>
-        <SignIn />
+        <SignIn setUser={setUser} />
+        {/* <div>
+          <Routes>
+            <Route>
+              <Route index element={<SignIn setUser={setUser} />} />
+              <Route path="/" element={<AdminSignIn />} />
+            </Route>
+          </Routes>
+        </div> */}
       </div>
     </>
   );

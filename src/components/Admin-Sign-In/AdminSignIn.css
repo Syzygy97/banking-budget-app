@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.admin-sign-in-container,
+.adminSignInComponent,
+.adminUsername,
+.adminPassword {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.admin-sign-in-container {
+  align-items: center;
+  gap: 3rem;
+  border: 2px solid black;
+  width: 450px;
+  height: 500px;
+  margin: 0 auto;
+  margin-top: 15rem;
+  padding: 1rem 2rem;
+}
+.adminSignInComponent {
+  gap: 2rem;
+  align-items: center;
+  margin: 0 auto;
+}
