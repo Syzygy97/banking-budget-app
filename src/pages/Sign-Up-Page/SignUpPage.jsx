@@ -94,7 +94,6 @@ export default function SignUpPage() {
       confirmPassword: userData.confirmPassword,
       balance: userData.balance,
     };
-
     setUserData({
       ...userData,
       firstName: "",
@@ -113,7 +112,6 @@ export default function SignUpPage() {
       LOCAL_STORAGE_KEY,
       JSON.stringify([...userDatas, newUserData])
     );
-    // localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(userDatas));
     console.log("userDatas after submission", userDatas);
     navigate("/adminPage");
   };
@@ -122,9 +120,10 @@ export default function SignUpPage() {
     setUserData({ ...userData, [e.target.name]: e.target.value });
   };
 
-  // useEffect(() => {
-
-  // }, [userDatas]);
+  useEffect(() => {
+    const localUserData = JSON.parse(localStorage.getItem("userKey"));
+    if (localUserData) setUserDatas(localUserData);
+  }, []);
 
   return (
     <div className="signUpPage">

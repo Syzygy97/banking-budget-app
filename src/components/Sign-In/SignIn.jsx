@@ -5,7 +5,7 @@ import Inputs from "../Inputs/Inputs";
 import Buttons from "../Buttons/Buttons";
 import { useNavigate } from "react-router-dom";
 
-export default function SignIn({ setUser }) {
+export default function SignIn() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -13,7 +13,6 @@ export default function SignIn({ setUser }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // if (!username || !password) return;
-    setUser({ username: username, password: password });
     navigate("dashboard/home");
     console.log(username, password);
   };
