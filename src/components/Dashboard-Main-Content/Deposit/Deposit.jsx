@@ -4,6 +4,8 @@ import DepositHistory from "../../History/Deposit History/DepositHistory";
 import Transactions from "../../Transactions/Transactions";
 
 export default function Deposit() {
+  const localUserData = JSON.parse(localStorage.getItem("userKey"));
+  console.log(localUserData);
   return (
     <>
       <div className="deposit-transactions">

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./SignIn.css";
 import logo from "../../assets/yourLogoHere.png";
 import Inputs from "../Inputs/Inputs";
@@ -6,22 +6,73 @@ import Buttons from "../Buttons/Buttons";
 import { useNavigate } from "react-router-dom";
 
 export default function SignIn() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const [signInDatas, setSignInDatas] = useState({
+    username: "",
+    password: "",
+  });
+
+  const [localData, setLocalData] = useState([]);
+
+  useEffect(() => {
+    const localUserData = JSON.parse(localStorage.getItem("userKey"));
+    if (localUserData) setLocalData(localUserData);
+  }, []);
+
+  // const registeredUsername = localData.map((item) => {
+  //   return item.username;
+  // });
+
+  // const registeredPassword = localData.map((item) => {
+  //   return item.password;
+  // });
+  // console.log("registeredUserName", registeredUsername);
+  // console.log("registeredUserName", registeredUsername);
+  // console.log("registeredPassword", registeredPassword);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // if (!username || !password) return;
-    navigate("dashboard/home");
-    console.log(username, password);
+    const validateUser = () => {
+      const userCheck = localData.find(
+        (user) =>
+          user.username === signInDatas.username &&
+          user.password === signInDatas.password
+      );
+      if (userCheck) {
+        console.log("Success");
+        navigate("dashboard/home");
+      } else {
+        console.log("Failed");
+        return;
+      }
+      console.log(userCheck);
+    };
+    validateUser(localData);
+    // if (
+    //   [registeredUsername[0]].includes(username) &&
+    //   [registeredPassword[0]].includes(password)
+    // ) {
   };
+  // const validateUser = () => {
+  //   const userCheck = localData.find(
+  //     (user) =>
+  //       user.username === signInDatas.username &&
+  //       user.password === signInDatas.password
+  //   );
+  //   if (userCheck) {
+  //     console.log("Success");
+  //   } else {
+  //     console.log("Failed");
+  //   }
+  //   console.log(userCheck);
+  // };
+  // useEffect(() => {
+  //   validateUser(localData);
+  // }, [signInDatas.username, signInDatas.password]);
+  // console.log(signInDatas);
 
-  const handleUsername = (e) => {
-    setUsername(e.target.value);
-  };
-  const handlePassword = (e) => {
-    setPassword(e.target.value);
+  const handleInputChange = (e) => {
+    setSignInDatas({ ...signInDatas, [e.target.name]: e.target.value });
   };
 
   function navigateToSignUpPage() {
@@ -39,18 +90,20 @@ export default function SignIn() {
           <label>Username</label>
           <Inputs
             type="text"
+            name="username"
             placeholder="enter username"
-            value={username}
-            onChange={handleUsername}
+            value={signInDatas.username}
+            onChange={handleInputChange}
           />
         </div>
         <div className="password">
           <label>Password</label>
           <Inputs
             type="password"
+            name="password"
             placeholder="enter password"
-            value={password}
-            onChange={handlePassword}
+            value={signInDatas.password}
+            onChange={handleInputChange}
           />
         </div>
         <Buttons

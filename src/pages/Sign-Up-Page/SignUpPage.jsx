@@ -119,6 +119,10 @@ export default function SignUpPage() {
   const onChange = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
   };
+  const navigateToLandingPage = (e) => {
+    e.preventDefault();
+    navigate("/");
+  };
 
   useEffect(() => {
     const localUserData = JSON.parse(localStorage.getItem("userKey"));
@@ -129,7 +133,7 @@ export default function SignUpPage() {
     <div className="signUpPage">
       <section className="signUpBg"></section>
       <section className="signUpInputsContainer">
-        <img src={logo} alt="logo"></img>
+        <img src={logo} alt="logo" onClick={navigateToLandingPage}></img>
         <form onSubmit={handleSignUpSubmit} className="signUpInputs">
           {dataInputs.map((input) => (
             <Inputs
