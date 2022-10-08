@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
 import SignIn from "../../components/Sign-In/SignIn";
 import AdminSignIn from "../../components/Admin-Sign-In/AdminSignIn";
+import Footer from "../../components/Footer/Footer";
 
 const TitlePage = ({ setUser }) => {
   return (
@@ -37,6 +38,7 @@ const TitlePage = ({ setUser }) => {
           </button>
         </div>
         <SignIn setUser={setUser} />
+        <Footer></Footer>
         {/* <div>
           <Routes>
             <Route>

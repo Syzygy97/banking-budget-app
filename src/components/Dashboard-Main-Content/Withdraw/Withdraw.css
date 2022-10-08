@@ -11,4 +11,17 @@
   align-items: center;
   gap: 2.5rem;
   height: 50%;
+  background-color: #182747;
+  color: #fff;
+}
+.withdrawMoney {
+  text-transform: uppercase;
+  font-size: 3rem;
+  letter-spacing: 4px;
+}
+
+.withdraw-history {
+  background-color: #182747;
+  color: #fff;
+  padding-top: 2rem;
 }

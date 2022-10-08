@@ -7,55 +7,55 @@
 }
 
 .sign-in-container {
-  border: 2px solid black;
+  border: none;
   width: 450px;
   height: 450px;
+  border-radius: 6px;
+  box-shadow: 5px 5px 5px #000;
+  background-color: #fd841f;
 }
+
+.signInLogo {
+  height: 15rem;
+  margin-bottom: 3rem;
+}
+
+.signUpBtn {
+  background-color: #182747;
+  cursor: pointer;
+  color: #fff ;
+}
+
+.signUpBtn:hover {
+  color: #fd841f;
+}
+
+.labelName {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
 .signInComponent {
   gap: 1rem;
 }
-.sign-in-container > img {
-  height: 90px;
-  margin-bottom: 2em;
-}
+
 .username,
 .password {
   display: flex;
   margin-bottom: 1.75em;
   gap: 0.5rem;
 }
+
 .userAccessButtons {
   margin-bottom: 3em;
 }
+
 .signInBtn {
-  background-color: blue;
-  cursor: pointer;
-}
-/* .sign-in {
-  border-radius: 20px;
-  box-shadow: 5px 5px 5px #000;
-  height: 450px;
-  margin-top: 50px;
-  max-width: 40%;
-  width: 100%;
-  background-image: linear-gradient(rgb(251, 133, 0), rgb(241, 174, 97));
-}
-
-.sign-div {
-  display: flex;
-  justify-content: center;
-  gap: 3rem;
-  align-items: center;
-  margin-top: 1.5rem;
-}
-
-.sign-btn {
-  padding: 1rem 1.5rem;
-  font-size: 1.5rem;
-  border-radius: 8px;
-  border: none;
   background-color: #182747;
-  color: #fff;
-  text-transform: uppercase;
   cursor: pointer;
-} */
+  color: #fff ;
+}
+
+.signInBtn:hover {
+  color: #fd841f;
+}
