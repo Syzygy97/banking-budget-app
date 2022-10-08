@@ -9,6 +9,8 @@ const LOCAL_STORAGE_KEY = "signedInData";
 
 export default function SignIn() {
   const navigate = useNavigate();
+  const [isError, setIsError] = useState(false);
+  const [withAccount, setWithAccount] = useState(true);
   const [signInDatas, setSignInDatas] = useState({
     username: "",
     password: "",
@@ -23,50 +25,44 @@ export default function SignIn() {
     if (localUserData) setLocalData(localUserData);
   }, []);
 
-  // const registeredUsername = localData.map((item) => {
-  //   return item.username;
-  // });
+  const validateUser = () => {
+    const userCheck = localData.find(
+      (user) =>
+        user.username === signInDatas.username &&
+        user.password === signInDatas.password
+    );
+    console.log("includes", localData.includes(userCheck));
+    console.log("icheckuser", userCheck);
+    if (userCheck) {
+      console.log("Success");
+      setUserInput(userCheck);
+      navigate("dashboard/home");
+      localStorage.setItem(
+        LOCAL_STORAGE_KEY,
+        JSON.stringify(...userInput, {
+          id: userCheck.id,
+          firstName: userCheck.firstName,
+          middleName: userCheck.middleName,
+          lastName: userCheck.lastName,
+          email: userCheck.email,
+          username: userCheck.username,
+          password: userCheck.password,
+          confirmPassword: userCheck.confirmPassword,
+          balance: userCheck.balance,
+        })
+      );
+    } else {
+      setIsError(true);
+      setWithAccount(false);
+      console.log("Failed");
+      return;
+    }
+    console.log("userCheck", userCheck);
+  };
 
-  // const registeredPassword = localData.map((item) => {
-  //   return item.password;
-  // });
-  // console.log("registeredUserName", registeredUsername);
-  // console.log("registeredUserName", registeredUsername);
-  // console.log("registeredPassword", registeredPassword);
-
+  console.log("error state", isError);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const validateUser = () => {
-      const userCheck = localData.find(
-        (user) =>
-          user.username === signInDatas.username &&
-          user.password === signInDatas.password
-      );
-      console.log("includes", localData.includes(userCheck));
-      if (userCheck) {
-        console.log("Success");
-        setUserInput(userCheck);
-        navigate("dashboard/home");
-        localStorage.setItem(
-          LOCAL_STORAGE_KEY,
-          JSON.stringify(...userInput, {
-            id: userCheck.id,
-            firstName: userCheck.firstName,
-            middleName: userCheck.middleName,
-            lastName: userCheck.lastName,
-            email: userCheck.email,
-            username: userCheck.username,
-            password: userCheck.password,
-            confirmPassword: userCheck.confirmPassword,
-            balance: userCheck.balance,
-          })
-        );
-      } else {
-        console.log("Failed");
-        return;
-      }
-      console.log("userCheck", userCheck);
-    };
     validateUser(localData);
   };
   console.log("userInput", userInput);
@@ -74,7 +70,10 @@ export default function SignIn() {
   const handleInputChange = (e) => {
     setSignInDatas({ ...signInDatas, [e.target.name]: e.target.value });
   };
-
+  const focusInput = () => {
+    setIsError(false);
+    setWithAccount(true);
+  };
   function navigateToSignUpPage() {
     navigate("signUp");
   }
@@ -91,9 +90,12 @@ export default function SignIn() {
           <Inputs
             type="text"
             name="username"
+            errorMessage="Username does not exist"
             placeholder="enter username"
             value={signInDatas.username}
             onChange={handleInputChange}
+            onClick={focusInput}
+            required
           />
         </div>
         <div className="password">
@@ -101,12 +103,22 @@ export default function SignIn() {
           <Inputs
             type="password"
             name="password"
+            errorMessage="Incorrect password"
             placeholder="enter password"
             value={signInDatas.password}
             onChange={handleInputChange}
+            onClick={focusInput}
+            required
           />
         </div>
-        <Buttons className="signInBtn" type="submit" name="Sign In" />
+        <Buttons
+          className={withAccount ? "signInBtn-enabled" : "signInBtn-disabled"}
+          type="submit"
+          name="Sign In"
+        />
+        <h2 className={isError ? "invalid" : "valid"}>
+          Account does not exist
+        </h2>
       </form>
     </div>
   );

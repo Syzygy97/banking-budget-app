@@ -1,20 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Inputs.css";
 
 export default function Inputs(props) {
-  const { label, onChange, id, ...inputProps } = props;
+  const [focused, setFocused] = useState(false);
+  const { errorMessage, label, onChange, id, ...inputProps } = props;
+  const handleFocusTrue = (e) => {
+    setFocused(true);
+  };
+  const handleFocusFalse = (e) => {
+    setFocused(false);
+  };
   return (
     <>
       <label>{label}</label>
-      <input {...inputProps} onChange={onChange} />
-      {/* <input
-        type={type}
-        placeholder={placeholder}
-        autoComplete="off"
-        value={value}
+      <input
+        {...inputProps}
         onChange={onChange}
-        required
-      /> */}
+        onBlur={handleFocusFalse}
+        onFocus={handleFocusTrue}
+        focused={focused.toString()}
+      />
+      <span>{errorMessage}</span>
     </>
   );
 }

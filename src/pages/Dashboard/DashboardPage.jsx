@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./DashboardPage.css";
 import SideBar from "../../components/SideBar/SideBar";
@@ -11,6 +11,8 @@ import Profile from "../../components/Dashboard-Main-Content/Profile/Profile";
 import Transfer from "../../components/Dashboard-Main-Content/Transfer/Transfer";
 
 export default function DashboardPage() {
+  const LOCAL_DATA = JSON.parse(localStorage.getItem("signedInData"));
+  const [userInfo, setUserInfo] = useState(LOCAL_DATA);
   return (
     <div className="dashboardPage">
       <SideBar />
@@ -19,14 +21,17 @@ export default function DashboardPage() {
           <Route>
             <Route path="home" element={<DashboardHome />} />
             <Route path="expenses" element={<Expense />} />
-            <Route path="deposit" element={<Deposit />} />
+            <Route
+              path="deposit"
+              element={<Deposit setUserInfo={setUserInfo} />}
+            />
             <Route path="withdraw" element={<Withdraw />} />
             <Route path="transfer" element={<Transfer />} />
             <Route path="profile" element={<Profile />} />
           </Route>
         </Routes>
       </main>
-      <UserOverview />
+      <UserOverview userInfo={userInfo} />
     </div>
   );
 }
