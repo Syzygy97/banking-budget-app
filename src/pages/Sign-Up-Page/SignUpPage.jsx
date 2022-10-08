@@ -94,7 +94,6 @@ export default function SignUpPage() {
       confirmPassword: userData.confirmPassword,
       balance: userData.balance,
     };
-
     setUserData({
       ...userData,
       firstName: "",
@@ -113,7 +112,6 @@ export default function SignUpPage() {
       LOCAL_STORAGE_KEY,
       JSON.stringify([...userDatas, newUserData])
     );
-    // localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(userDatas));
     console.log("userDatas after submission", userDatas);
     navigate("/adminPage");
   };
@@ -121,16 +119,21 @@ export default function SignUpPage() {
   const onChange = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
   };
+  const navigateToLandingPage = (e) => {
+    e.preventDefault();
+    navigate("/");
+  };
 
-  // useEffect(() => {
-
-  // }, [userDatas]);
+  useEffect(() => {
+    const localUserData = JSON.parse(localStorage.getItem("userKey"));
+    if (localUserData) setUserDatas(localUserData);
+  }, []);
 
   return (
     <div className="signUpPage">
       <section className="signUpBg"></section>
       <section className="signUpInputsContainer">
-        <img className="signUpLogo" src={digilogo2} alt="logo"></img>
+        <img className="signUpLogo" src={digilogo2} alt="logo" onClick={navigateToLandingPage}></img>
         <form onSubmit={handleSignUpSubmit} className="signUpInputs">
           {dataInputs.map((input) => (
             <Inputs className="signUpPageInput"

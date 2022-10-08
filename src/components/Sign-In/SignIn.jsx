@@ -1,28 +1,78 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./SignIn.css";
 import digilogo from "../../assets/digilogo.png";
 import Inputs from "../Inputs/Inputs";
 import Buttons from "../Buttons/Buttons";
 import { useNavigate } from "react-router-dom";
 
-export default function SignIn({ setUser }) {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+const LOCAL_STORAGE_KEY = "signedInData";
+
+export default function SignIn() {
   const navigate = useNavigate();
+  const [signInDatas, setSignInDatas] = useState({
+    username: "",
+    password: "",
+  });
+  const [userInput, setUserInput] = useState([]);
+  const [localData, setLocalData] = useState([]);
+
+  console.log(localData);
+
+  useEffect(() => {
+    const localUserData = JSON.parse(localStorage.getItem("userKey"));
+    if (localUserData) setLocalData(localUserData);
+  }, []);
+
+  // const registeredUsername = localData.map((item) => {
+  //   return item.username;
+  // });
+
+  // const registeredPassword = localData.map((item) => {
+  //   return item.password;
+  // });
+  // console.log("registeredUserName", registeredUsername);
+  // console.log("registeredUserName", registeredUsername);
+  // console.log("registeredPassword", registeredPassword);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // if (!username || !password) return;
-    setUser({ username: username, password: password });
-    navigate("dashboard/home");
-    console.log(username, password);
+    const validateUser = () => {
+      const userCheck = localData.find(
+        (user) =>
+          user.username === signInDatas.username &&
+          user.password === signInDatas.password
+      );
+      console.log("includes", localData.includes(userCheck));
+      if (userCheck) {
+        console.log("Success");
+        setUserInput(userCheck);
+        navigate("dashboard/home");
+        localStorage.setItem(
+          LOCAL_STORAGE_KEY,
+          JSON.stringify(...userInput, {
+            id: userCheck.id,
+            firstName: userCheck.firstName,
+            middleName: userCheck.middleName,
+            lastName: userCheck.lastName,
+            email: userCheck.email,
+            username: userCheck.username,
+            password: userCheck.password,
+            confirmPassword: userCheck.confirmPassword,
+            balance: userCheck.balance,
+          })
+        );
+      } else {
+        console.log("Failed");
+        return;
+      }
+      console.log("userCheck", userCheck);
+    };
+    validateUser(localData);
   };
+  console.log("userInput", userInput);
 
-  const handleUsername = (e) => {
-    setUsername(e.target.value);
-  };
-  const handlePassword = (e) => {
-    setPassword(e.target.value);
+  const handleInputChange = (e) => {
+    setSignInDatas({ ...signInDatas, [e.target.name]: e.target.value });
   };
 
   function navigateToSignUpPage() {
@@ -40,26 +90,23 @@ export default function SignIn({ setUser }) {
           <label className="labelName">Username</label>
           <Inputs
             type="text"
+            name="username"
             placeholder="enter username"
-            value={username}
-            onChange={handleUsername}
+            value={signInDatas.username}
+            onChange={handleInputChange}
           />
         </div>
         <div className="password">
           <label className="labelName">Password</label>
           <Inputs
             type="password"
+            name="password"
             placeholder="enter password"
-            value={password}
-            onChange={handlePassword}
+            value={signInDatas.password}
+            onChange={handleInputChange}
           />
         </div>
-        <Buttons
-          className="signInBtn"
-          type="submit"
-          name="Sign In"
-          // onClick={navigateToDashboard}
-        />
+        <Buttons className="signInBtn" type="submit" name="Sign In" />
       </form>
     </div>
   );

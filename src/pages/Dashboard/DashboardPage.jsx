@@ -10,7 +10,7 @@ import Withdraw from "../../components/Dashboard-Main-Content/Withdraw/Withdraw"
 import Profile from "../../components/Dashboard-Main-Content/Profile/Profile";
 import Transfer from "../../components/Dashboard-Main-Content/Transfer/Transfer";
 
-export default function DashboardPage({ user }) {
+export default function DashboardPage() {
   return (
     <div className="dashboardPage">
       <SideBar />
@@ -26,7 +26,7 @@ export default function DashboardPage({ user }) {
           </Route>
         </Routes>
       </main>
-      <UserOverview user={user} />
+      <UserOverview />
     </div>
   );
 }

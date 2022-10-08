@@ -1,36 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Buttons from "../../components/Buttons/Buttons";
 import "./AdminPage.css";
 
 export default function AdminPage() {
   const navigate = useNavigate();
-  const localUserData = JSON.parse(localStorage.getItem("userKey"));
-  console.log(localUserData);
-  // const [adminData, setAdminData] = useState(adminList);
-  // const { firstName, balance } = adminList;
-  // const [firstName, setFirstName] = useState("");
-  // const [middleName, setMiddleName] = useState("");
-  // const [lastName, setLastName] = useState("");
-  // const [username, setUsername] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [confirmPassword, setConfirmPassword] = useState("");
-  // const [balance, setBalace] = useState("");
-  // console.log(adminList.firstName);s
-  // console.log("adminListName", [...adminList].firstName);
-  // console.log("adminList", adminList);
-  // console.log("adminData", adminData);
-  // console.log("adminData2", [adminData]);
-  // console.log("adminData3", ...[adminData]);
-  // setAdminData((prevList) => {
-  //   return [...prevList, ...adminData];
-  // });
-  //   setAdminData((prevData) => {
-  //     return { ...prevData, newUserObj };
-  //   });
-  //   console.log("admin", adminData);
-  // };
+  const [userList, setList] = useState([]);
+  useEffect(() => {
+    const localUserData = JSON.parse(localStorage.getItem("userKey"));
+    if (localUserData) setList(localUserData);
+  }, []);
+  console.log("local", userList);
   const handleAdminDelete = () => {
     // setAdminData([]);
   };
@@ -49,7 +29,7 @@ export default function AdminPage() {
       </div>
       <div className="user-list-container">
         <ul>
-          {localUserData.map((data) => {
+          {userList.map((data) => {
             return (
               <li key={data.id}>
                 <div className="user-list">

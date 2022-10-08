@@ -1,12 +1,11 @@
 import React from "react";
 import "./TitlePage.css";
-import { Routes, Route } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
 import SignIn from "../../components/Sign-In/SignIn";
 import AdminSignIn from "../../components/Admin-Sign-In/AdminSignIn";
 import Footer from "../../components/Footer/Footer";
 
-const TitlePage = ({ setUser }) => {
+const TitlePage = () => {
   return (
     <>
       <NavBar />
@@ -37,7 +36,7 @@ const TitlePage = ({ setUser }) => {
             </svg>
           </button>
         </div>
-        <SignIn setUser={setUser} />
+        <SignIn />
         <Footer></Footer>
         {/* <div>
           <Routes>
