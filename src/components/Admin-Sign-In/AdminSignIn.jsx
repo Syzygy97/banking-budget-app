@@ -28,36 +28,40 @@ export default function AdminSignIn() {
   }
   return (
     <div className="admin-sign-in-container">
-      <h1>ADMIN SIGN IN</h1>
-      <div className="userAccessButtons">
-        <Buttons name="USER SIGN IN" onClick={navigateToSignInComponent} />
-      </div>
-      <form onSubmit={handleSubmit} className="adminSignInComponent">
-        <div className="adminUsername">
-          <label>Username</label>
-          <Inputs
-            type="text"
-            placeholder="enter admin username"
-            value={adminUsername}
-            onChange={handleAdminUsername}
-          />
+      <div className="admin-div">
+        <h1 className="adminSignIn">ADMIN SIGN IN</h1>
+        <div className="userAccessButtons">
+          <Buttons name="USER SIGN IN" onClick={navigateToSignInComponent} />
         </div>
-        <div className="adminPassword">
-          <label>Password</label>
-          <Inputs
-            type="password"
-            placeholder="enter admin password"
-            value={adminPassword}
-            onChange={handleAdminPassword}
-          />
-        </div>
+        <form onSubmit={handleSubmit} className="adminSignInComponent">
+          <div className="adminUsername">
+            <label className="adminUserLabel">Username</label>
+            <Inputs className="userInputAdmin"
+              type="text"
+              placeholder="enter admin username"
+              value={adminUsername}
+              onChange={handleAdminUsername}
+            />
+          </div>
+          <div className="adminPassword">
+            <label className="adminUserLabel">Password</label>
+            <Inputs className="userInputAdmin"
+              type="password"
+              placeholder="enter admin password"
+              value={adminPassword}
+              onChange={handleAdminPassword}
+            />
+          </div>
+        </form>
+        <div className="adminSignInBtn">
         <Buttons
-          className="signInBtn"
-          type="submit"
-          name="Sign In"
-          // onClick={navigateToDashboard}
-        />
-      </form>
+            className="signInBtn"
+            type="submit"
+            name="Sign In"
+            // onClick={navigateToDashboard}
+          />
+        </div>
+      </div>
     </div>
   );
 }

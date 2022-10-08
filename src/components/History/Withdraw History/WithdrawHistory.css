@@ -5,3 +5,8 @@
 .withdraw-history > h1 {
   text-align: center;
 }
+
+.withdrawHistory {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+}

@@ -1,25 +1,41 @@
 .sideBar {
   width: 15%;
   height: 100%;
-  border: 2px solid black;
+  /* border: 2px solid black; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   font-size: 2rem;
+  background-color: #fd841f;
 }
+
 .sideBar > img {
-  scale: 0.6;
+  height: 30rem;
   cursor: pointer;
 }
+
 .sideBarList {
   list-style: none;
   line-height: 2em;
   margin-left: 1em;
 }
+
 .sideBarList > li {
   cursor: pointer;
 }
+
 .settings {
   font-size: 2em;
   margin: 0 0 0.5em 0.5em;
+  color: #fff;
+}
+
+.lists {
+  text-decoration: none;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.lists:hover {
+  color: #182747;
 }
