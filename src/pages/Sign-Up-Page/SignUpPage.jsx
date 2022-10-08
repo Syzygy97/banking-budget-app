@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./SignUp.css";
-import logo from "../../assets/yourLogoHere.png";
+import digilogo2 from "../../assets/digilogo2.png";
 import "../../components/Inputs/Inputs";
 import Buttons from "../../components/Buttons/Buttons";
 import Inputs from "../../components/Inputs/Inputs";
@@ -133,17 +133,19 @@ export default function SignUpPage() {
     <div className="signUpPage">
       <section className="signUpBg"></section>
       <section className="signUpInputsContainer">
-        <img src={logo} alt="logo" onClick={navigateToLandingPage}></img>
+        <img className="signUpLogo" src={digilogo2} alt="logo" onClick={navigateToLandingPage}></img>
         <form onSubmit={handleSignUpSubmit} className="signUpInputs">
           {dataInputs.map((input) => (
-            <Inputs
+            <Inputs className="signUpPageInput"
               key={input.id}
               {...input}
               value={userData[input.name]}
               onChange={onChange}
             />
           ))}
-          <Buttons type="submit" name="Create Account" />
+          <div className="btnDiv">
+          <Buttons className="createAccountBtn" type="submit" name="Create Account" />
+          </div>
           {/* <div>
             <label>First Name</label>
             <Inputs type="text" placeholder="enter first name" />

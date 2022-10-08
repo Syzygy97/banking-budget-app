@@ -3,26 +3,50 @@
   padding: 0;
   box-sizing: border-box;
 }
-.admin-sign-in-container,
-.adminSignInComponent,
-.adminUsername,
-.adminPassword {
+
+.admin-sign-in-container {
+  background-color: #182747;
+  height: 100vh;
+  display: flex;
+}
+
+.admin-div {
+  background-color: #fd841f;
+  width: 450px;
+  height: 500px;
+  box-shadow: 5px 5px 5px #000;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-.admin-sign-in-container {
   align-items: center;
-  gap: 3rem;
-  border: 2px solid black;
-  width: 450px;
-  height: 500px;
   margin: 0 auto;
   margin-top: 15rem;
   padding: 1rem 2rem;
+  gap: 3rem;
 }
-.adminSignInComponent {
-  gap: 2rem;
-  align-items: center;
-  margin: 0 auto;
+
+
+.adminSignIn {
+  font-size: 3rem;
+  color: #182747;
+}
+
+.adminUserLabel {
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.userInputAdmin {
+  width: 25ch;
+  padding: 1rem 1.5rem;
+}
+
+.adminUsername {
+  padding-bottom: 2rem;
+}
+
+.adminSignInBtn {
+  margin-top: 4rem;
 }

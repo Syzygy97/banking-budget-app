@@ -2,6 +2,8 @@ import React from "react";
 import "./TitlePage.css";
 import NavBar from "../../components/NavBar/NavBar";
 import SignIn from "../../components/Sign-In/SignIn";
+import AdminSignIn from "../../components/Admin-Sign-In/AdminSignIn";
+import Footer from "../../components/Footer/Footer";
 
 const TitlePage = () => {
   return (
@@ -35,6 +37,7 @@ const TitlePage = () => {
           </button>
         </div>
         <SignIn />
+        <Footer></Footer>
         {/* <div>
           <Routes>
             <Route>

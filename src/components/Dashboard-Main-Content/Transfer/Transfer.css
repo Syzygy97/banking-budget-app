@@ -9,6 +9,19 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 2.5rem;
+  gap: 2rem;
   height: 50%;
+  background-color: #182747;
+  color: #fff;
+}
+
+.sendMoney {
+  text-transform: uppercase;
+  font-size: 3rem;
+  letter-spacing: 4px;
+}
+
+.transfer-label {
+  font-size: 2rem;
+  text-transform: uppercase;
 }

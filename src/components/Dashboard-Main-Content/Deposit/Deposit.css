@@ -11,4 +11,16 @@
   align-items: center;
   gap: 2.5rem;
   height: 50%;
+  background-color: #182747;
+  color: #fff;
+}
+
+.add-money {
+  text-transform: uppercase;
+  font-size: 3rem;
+  letter-spacing: 4px;
+}
+
+.depositHistory {
+  padding-top: 2rem;
 }

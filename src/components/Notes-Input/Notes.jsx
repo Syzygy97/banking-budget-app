@@ -3,7 +3,7 @@ import "./Notes.css";
 
 export default function Notes({ name, placeholder, cols, rows }) {
   return (
-    <textarea
+    <textarea className="text-area"
       name={name}
       placeholder={placeholder}
       cols={cols}
