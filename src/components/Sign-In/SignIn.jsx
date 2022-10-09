@@ -57,10 +57,8 @@ export default function SignIn() {
       console.log("Failed");
       return;
     }
-    console.log("userCheck", userCheck);
   };
 
-  console.log("error state", isError);
   const handleSubmit = async (e) => {
     e.preventDefault();
     validateUser(localData);

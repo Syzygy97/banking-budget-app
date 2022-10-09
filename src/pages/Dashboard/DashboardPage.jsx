@@ -25,7 +25,10 @@ export default function DashboardPage() {
               path="deposit"
               element={<Deposit setUserInfo={setUserInfo} />}
             />
-            <Route path="withdraw" element={<Withdraw />} />
+            <Route
+              path="withdraw"
+              element={<Withdraw setUserInfo={setUserInfo} />}
+            />
             <Route path="transfer" element={<Transfer />} />
             <Route path="profile" element={<Profile />} />
           </Route>

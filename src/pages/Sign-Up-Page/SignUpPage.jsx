@@ -111,7 +111,6 @@ export default function SignUpPage() {
       required: true,
     },
   ];
-  // const newUserData2 = [userData].map((data) => ({ ...data }));
   const handleSignUpSubmit = (e) => {
     e.preventDefault();
     const newUserData = {
