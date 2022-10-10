@@ -7,3 +7,25 @@ input {
   outline: none;
   background-color: transparent;
 }
+span {
+  color: red;
+  font-size: 1rem;
+  padding: 0.2rem;
+  display: none;
+  width: 55ch;
+}
+
+input[name="firstName"],
+input[name="middleName"],
+input[name="lastName"] {
+  text-transform: capitalize;
+}
+input[name="firstName"]::placeholder,
+input[name="middleName"]::placeholder,
+input[name="lastName"]::placeholder {
+  text-transform: lowercase;
+}
+
+input:invalid[focused="true"] + span {
+  display: block;
+}

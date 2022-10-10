@@ -5,36 +5,58 @@ import Transactions from "../../Transactions/Transactions";
 import Buttons from "../../Buttons/Buttons";
 import Inputs from "../../Inputs/Inputs";
 
-export default function Deposit() {
-  const LOCAL_USER_DATA = JSON.parse(localStorage.getItem("signedInData"));
-  const [userData, setUserData] = useState(LOCAL_USER_DATA);
+export default function Deposit({ setUserInfo }) {
+  const LOCAL_SIGNED_IN_DATA = JSON.parse(localStorage.getItem("signedInData"));
+  const LOCAL_ADMIN_DATA = JSON.parse(localStorage.getItem("userKey"));
+  const [adminUserData, setAdminUserData] = useState(LOCAL_ADMIN_DATA);
+  const [userData, setUserData] = useState(LOCAL_SIGNED_IN_DATA);
   const [toDeposit, setToDeposit] = useState("");
   const { balance } = userData;
-  console.log("userData", userData);
-  console.log("userData balance", balance);
 
   const handleChange = (e) => {
     setToDeposit(e.target.value);
   };
+  const updateAdminUserData = () => {
+    const currentUser = adminUserData.map((user) => {
+      if (
+        user.username.includes(userData.username) &&
+        user.password.includes(userData.password)
+      ) {
+        return LOCAL_SIGNED_IN_DATA;
+      } else {
+        return user;
+      }
+    });
+    setAdminUserData(currentUser);
+  };
+
+  useEffect(() => {
+    localStorage.setItem("userKey", JSON.stringify(adminUserData));
+  }, [adminUserData]);
+
   const handleDepositSubmit = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     if (toDeposit === "") {
-      const newBalance = (0 + parseInt(balance, 10)).toString();
-      setUserData({ ...userData, balance: newBalance });
-      console.log("new balance", newBalance);
+      const sameBalance = (0 + parseFloat(balance, 10)).toString();
+      setUserData({ ...userData, balance: sameBalance });
+      setUserInfo({ ...userData, balance: sameBalance });
     } else {
       const newBalance = (
-        parseInt(toDeposit, 10) + parseInt(balance, 10)
+        parseFloat(toDeposit, 10) + parseFloat(balance, 10)
       ).toString();
       setUserData({ ...userData, balance: newBalance });
+      setUserInfo({ ...userData, balance: newBalance });
+      setToDeposit("");
       localStorage.setItem(
         "signedInData",
         JSON.stringify({ ...userData, balance: newBalance })
       );
-      console.log("new balance", newBalance);
     }
-    console.log("new money", userData);
   };
+  useEffect(() => {
+    updateAdminUserData();
+  }, [userData]);
+
   return (
     <>
       <form onSubmit={handleDepositSubmit} className="deposit-transactions">
@@ -42,12 +64,14 @@ export default function Deposit() {
         <label>Amount</label>
         <Inputs
           type="number"
+          min="0"
+          step="0.01"
           name="balance"
           value={toDeposit}
           onChange={handleChange}
         />
         <Transactions name="balance" />
-        <Buttons name="Deposit" />
+        <Buttons type="submit" name="Deposit" />
       </form>
       <DepositHistory className="deposit-history" />
     </>

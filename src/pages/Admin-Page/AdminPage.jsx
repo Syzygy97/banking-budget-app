@@ -52,29 +52,6 @@ export default function AdminPage() {
           })}
         </ul>
       </div>
-      {/* <div className="admin-page-container">
-        <h1>USER LIST</h1>
-        <div className="user-label">
-          <label>First Name</label>
-          <label>Balance</label>
-          <label>Status</label>
-        </div>
-        <div className="user-list">
-          <div className="user-first-name">
-            <h2>{adminData.firstName}</h2>
-          </div>
-          <div className="user-balance">
-            <h2>{adminData.balance}</h2>
-          </div>
-          <div className="user-account-status">
-            <h2>PENDING</h2>
-            <h2>✔</h2>
-            <h2>✖</h2>
-            <h2>edit</h2>
-            <h2>delete</h2>
-          </div>
-        </div>
-      </div> */}
     </div>
   );
 }

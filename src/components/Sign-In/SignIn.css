@@ -38,10 +38,39 @@
 .signInComponent {
   gap: 1rem;
 }
+.signInComponent > h2.valid {
+  color: red;
+  opacity: 0;
+  transition: opacity 450ms ease-out;
+}
+h2.invalid {
+  color: red;
+  opacity: 1;
+  transition: opacity 450ms ease-in;
+  /* animation-name: opacity;
+  animation-duration: 2500ms;
+  animation-fill-mode: forwards; */
+}
+/* @keyframes opacity {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+} */
+.sign-in-container > img {
+  height: 90px;
+  margin-bottom: 2em;
+}
 
 .username,
 .password {
   display: flex;
+  flex-direction: column;
   margin-bottom: 1.75em;
   gap: 0.5rem;
 }
@@ -49,13 +78,29 @@
 .userAccessButtons {
   margin-bottom: 3em;
 }
-
-.signInBtn {
+.signInBtn-enabled {
   background-color: #182747;
+  color: #fff
   cursor: pointer;
-  color: #fff ;
+  opacity: 1;
+  transition: opacity 300ms ease-in;
 }
+.signInBtn-disabled {
+  background-color: #182747;
+  color: #fff
+  pointer-events: none;
+  opacity: 0.3;
+  transition: opacity 300ms ease-in;
+}
+/* .sign-in {
+  border-radius: 20px;
+  box-shadow: 5px 5px 5px #000;
+  height: 450px;
+  margin-top: 50px;
+  max-width: 40%;
+  width: 100%;
+  background-image: linear-gradient(rgb(251, 133, 0), rgb(241, 174, 97));}
 
-.signInBtn:hover {
+.signInBtn-enabled:hover {
   color: #fd841f;
 }
