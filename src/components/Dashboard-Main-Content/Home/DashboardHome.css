@@ -32,10 +32,9 @@
 .lineGraph,
 .depositHistoryList,
 .withdrawHistoryList {
-  /* border: 3px solid black; */
   background-color: #182747;
   border-radius: 10px;
-  color: #fff;
+  color: #fd841f;
 }
 .depositHistoryList,
 .withdrawHistoryList {
@@ -44,12 +43,15 @@
 
 figure {
   height: 90%;
-  width: auto;
 }
 
-.amount {
-  font-size: 5rem;
+figure h4 {
+  color: #fd841f;
+  margin-left: 3rem;
+  font-size: 1.5rem;
 }
-.currentBalance {
-  font-size: 2.5rem;
+
+.graph-title {
+  color: #fd841f;
+  font-size: 5rem;
 }

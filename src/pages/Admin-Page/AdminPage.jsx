@@ -10,18 +10,19 @@ export default function AdminPage() {
     const localUserData = JSON.parse(localStorage.getItem("userKey"));
     if (localUserData) setList(localUserData);
   }, []);
-  console.log("local", userList);
-  const handleAdminDelete = () => {
-    // setAdminData([]);
-  };
-  const navigateToSignUpPage = (e) => {
+
+  const navigateToMainPage = (e) => {
     e.preventDefault();
-    navigate("/signUp");
+    navigate("/");
   };
   return (
     <div className="admin-page-container">
-      <h1>USER LIST</h1>
-      <Buttons name="Sign Up" onClick={navigateToSignUpPage} />
+      <h1>USER ACCOUNT LIST</h1>
+      <Buttons
+        className="back-to-main-btn"
+        name="Back to Main Page"
+        onClick={navigateToMainPage}
+      />
       <div className="user-label">
         <label>First Name</label>
         <label>Balance</label>
@@ -37,10 +38,10 @@ export default function AdminPage() {
                     <h2>{data.firstName}</h2>
                   </div>
                   <div className="user-balance">
-                    <h2>{data.balance}</h2>
+                    <h2>₱ {parseFloat(data.balance).toLocaleString()}</h2>
                   </div>
                   <div className="user-account-status">
-                    <h2>PENDING</h2>
+                    <h2>Active</h2>
                     <h2>✔</h2>
                     <h2>✖</h2>
                     <h2>edit</h2>

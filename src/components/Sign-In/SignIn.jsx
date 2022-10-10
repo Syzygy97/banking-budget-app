@@ -18,8 +18,6 @@ export default function SignIn() {
   const [userInput, setUserInput] = useState([]);
   const [localData, setLocalData] = useState([]);
 
-  console.log(localData);
-
   useEffect(() => {
     const localUserData = JSON.parse(localStorage.getItem("userKey"));
     if (localUserData) setLocalData(localUserData);
@@ -31,10 +29,7 @@ export default function SignIn() {
         user.username === signInDatas.username &&
         user.password === signInDatas.password
     );
-    console.log("includes", localData.includes(userCheck));
-    console.log("icheckuser", userCheck);
     if (userCheck) {
-      console.log("Success");
       setUserInput(userCheck);
       navigate("dashboard/home");
       localStorage.setItem(
@@ -54,7 +49,6 @@ export default function SignIn() {
     } else {
       setIsError(true);
       setWithAccount(false);
-      console.log("Failed");
       return;
     }
   };
@@ -63,7 +57,6 @@ export default function SignIn() {
     e.preventDefault();
     validateUser(localData);
   };
-  console.log("userInput", userInput);
 
   const handleInputChange = (e) => {
     setSignInDatas({ ...signInDatas, [e.target.name]: e.target.value });
@@ -80,12 +73,17 @@ export default function SignIn() {
     <div className="sign-in-container">
       <img className="signInLogo" src={digilogo} alt="logo"></img>
       <div className="userAccessButtons">
-        <Buttons className="signUpBtn" name="SIGN UP" onClick={navigateToSignUpPage} />
+        <Buttons
+          className="signUpBtn"
+          name="SIGN UP"
+          onClick={navigateToSignUpPage}
+        />
       </div>
       <form onSubmit={handleSubmit} className="signInComponent">
         <div className="username">
           <label className="labelName">Username</label>
           <Inputs
+            className="sign-in-inputs"
             type="text"
             name="username"
             errorMessage="Username does not exist"
@@ -99,6 +97,7 @@ export default function SignIn() {
         <div className="password">
           <label className="labelName">Password</label>
           <Inputs
+            className="sign-in-inputs"
             type="password"
             name="password"
             errorMessage="Incorrect password"

@@ -23,7 +23,7 @@
 .signUpBtn {
   background-color: #182747;
   cursor: pointer;
-  color: #fff ;
+  color: #fff;
 }
 
 .signUpBtn:hover {
@@ -47,21 +47,15 @@ h2.invalid {
   color: red;
   opacity: 1;
   transition: opacity 450ms ease-in;
-  /* animation-name: opacity;
-  animation-duration: 2500ms;
-  animation-fill-mode: forwards; */
 }
-/* @keyframes opacity {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-} */
+
+.sign-in-inputs {
+  width: 50ch;
+}
+.sign-in-inputs ~ span {
+  text-shadow: 3px 3px 8px rgb(255, 255, 255);
+}
+
 .sign-in-container > img {
   height: 90px;
   margin-bottom: 2em;
@@ -93,5 +87,9 @@ h2.invalid {
   pointer-events: none;
   opacity: 0.3;
   transition: opacity 300ms ease-in;
+}
+
+.signInBtn-enabled:hover {
+  color: #fd841f;
 }
 

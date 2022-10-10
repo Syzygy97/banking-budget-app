@@ -1,0 +1,23 @@
+.contacts-scroller {
+  height: 10vh;
+  display: grid;
+  grid-auto-flow: column;
+  padding-left: 1rem;
+  margin-top: 1rem;
+}
+.media-element > img {
+  height: 5rem;
+}
+.contacts-label {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+}
+.contacts-number {
+  padding-right: 2rem;
+  color: #182747;
+  font-weight: 400;
+}
+.contacts {
+  color: #182747;
+}
