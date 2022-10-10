@@ -1,17 +1,25 @@
 import React, { useState, useEffect } from "react";
 import "./Expense.css";
+import trash from "../../../assets/trash.png";
+import edit from "../../../assets/edit.png";
+import check from "../../../assets/check.png";
 
 function Expense() {
   const [expense, setExpense] = useState("");
   const [expenses, setExpenses] = useState([]);
   const [particular, setParticular] = useState("");
+  const [editing, setEditing] = useState(-1);
+  const [editAmount, setEditAmount] = useState("");
+  const [editTitle, setEditTitle] = useState("");
 
-  useEffect(() => {
-    if (localStorage.getItem("expenses")) {
-      const storedList = JSON.parse(localStorage.getItem("expenses"));
-      setExpenses(storedList);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (localStorage.getItem("expenses")) {
+  //     const storedList = JSON.parse(localStorage.getItem("expenses"));
+  //     setExpenses(storedList);
+  //   }
+  // }, []);
+
+  const userExpenses = JSON.parse(localStorage.getItem("expenses"));
 
   const addExpense = () => {
     if (expense) {
@@ -41,6 +49,24 @@ function Expense() {
     setExpenses(deleted);
     localStorage.setItem("expenses", JSON.stringify(deleted));
   };
+
+  const handleEdit = (expense) => {
+    setEditing(expense.id);
+    setEditAmount(expense.amount);
+    setEditTitle(expense.title);
+  };
+
+  const handleUpdate = (expense) => {
+    const updatedList = userExpenses.map((xpn) => {
+      if (xpn.id === expense.id) {
+        return { ...xpn, amount: editAmount, title: editTitle };
+      }
+      return xpn;
+    });
+    setExpenses(updatedList);
+    setEditing(-1);
+  };
+  console.log(editing);
 
   return (
     <div className="expense-container">
@@ -83,15 +109,59 @@ function Expense() {
         {expenses.map((expense) => (
           <React.Fragment key={expense.id}>
             <div className="user-expense-container">
-              <h2 className="user-expense-amount">₱{expense.amount}.00</h2>
-              <h2 className="user-expense-amount">{expense.title}</h2>
+              <h2 className="user-expense-amount">
+                {editing === expense.id ? (
+                  <input
+                    className="input-edit"
+                    type="text"
+                    value={editAmount}
+                    onChange={(e) => setEditAmount(e.target.value)}
+                  />
+                ) : (
+                  <span>₱{parseFloat(expense.amount).toFixed(2)}</span>
+                )}
+              </h2>
+              <h2 className="user-expense-amount">
+                {editing === expense.id ? (
+                  <input
+                    className="input-edit"
+                    type="text"
+                    // defaultValue={expense.title}
+                    value={editTitle}
+                    onChange={(e) => setEditTitle(e.target.value)}
+                  />
+                ) : (
+                  <span>{expense.title}</span>
+                )}
+              </h2>
               <div className="user-expense-delete-container">
-                <button
-                  className="user-expense-delete"
-                  onClick={() => handleDelete(expense)}
-                >
-                  delete
-                </button>
+                <div className="user-expense-buttons">
+                  <button className="user-expense-edit">
+                    {editing === expense.id ? (
+                      <img
+                        className="check-logo"
+                        src={check}
+                        alt="check logo"
+                        onClick={() => handleUpdate(expense)}
+                      />
+                    ) : (
+                      <button className="user-expense-edit">
+                        <img
+                          className="edit-logo"
+                          src={edit}
+                          alt="pencil logo"
+                          onClick={() => handleEdit(expense)}
+                        />
+                      </button>
+                    )}
+                  </button>
+                  <button
+                    className="user-expense-delete"
+                    onClick={() => handleDelete(expense)}
+                  >
+                    <img src={trash} className="trash-logo" alt="trash logo" />
+                  </button>
+                </div>
               </div>
             </div>
           </React.Fragment>
