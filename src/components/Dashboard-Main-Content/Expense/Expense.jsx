@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Expense.css";
 import trash from "../../../assets/trash.png";
 import edit from "../../../assets/edit.png";
@@ -11,13 +11,6 @@ function Expense() {
   const [editing, setEditing] = useState(-1);
   const [editAmount, setEditAmount] = useState("");
   const [editTitle, setEditTitle] = useState("");
-
-  // useEffect(() => {
-  //   if (localStorage.getItem("expenses")) {
-  //     const storedList = JSON.parse(localStorage.getItem("expenses"));
-  //     setExpenses(storedList);
-  //   }
-  // }, []);
 
   const userExpenses = JSON.parse(localStorage.getItem("expenses"));
 
@@ -36,12 +29,10 @@ function Expense() {
       setExpense("");
       setParticular("");
     }
-    console.log(expenses);
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(expense, particular);
   };
 
   const handleDelete = (expense) => {
@@ -66,7 +57,6 @@ function Expense() {
     setExpenses(updatedList);
     setEditing(-1);
   };
-  console.log(editing);
 
   return (
     <div className="expense-container">

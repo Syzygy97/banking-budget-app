@@ -38,14 +38,6 @@ const TitlePage = () => {
         </div>
         <SignIn />
         <Footer></Footer>
-        {/* <div>
-          <Routes>
-            <Route>
-              <Route index element={<SignIn setUser={setUser} />} />
-              <Route path="/" element={<AdminSignIn />} />
-            </Route>
-          </Routes>
-        </div> */}
       </div>
     </>
   );

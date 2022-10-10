@@ -1,15 +1,12 @@
-.deposit-history {
-  height: 50%;
-  border: 2px solid black;
+.depositHistory {
+  height: auto;
   background-color: #182747;
 }
 .deposit-history > h1 {
   text-align: center;
 }
-
-
 .depositHistory {
   font-size: 2.5rem;
   text-transform: uppercase;
-  color: #fff;
+  color: #fd841f;
 }

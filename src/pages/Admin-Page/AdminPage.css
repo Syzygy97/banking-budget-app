@@ -11,12 +11,17 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-image: url(../../assets/blueOrangeGradient.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 .admin-page-container > h1 {
   text-align: center;
   width: 80%;
-  border-bottom: 4px solid black;
+  border-bottom: 4px solid #182747;
   padding-bottom: 1.5rem;
+  color: #182747;
+  font-size: 4rem;
 }
 .user-list {
   justify-content: space-between;
@@ -28,23 +33,40 @@
 .user-label {
   width: 60%;
   padding: 0 4rem;
+  margin-bottom: -1rem;
 }
 .user-label > label {
   width: 100%;
   font-size: 2rem;
   text-transform: uppercase;
+  color: #fd841f;
+  font-weight: 600;
+  letter-spacing: 2px;
 }
 .user-list-container {
   width: 60%;
-  height: 80%;
+  height: 70%;
   border: 2px solid black;
   justify-content: space-between;
   padding: 3rem 4rem;
+  background-color: #182747;
+  color: #fd841f;
+  overflow: auto;
+  overflow-x: hidden;
+  letter-spacing: 1px;
 }
 .user-list-container > ul {
   width: 100%;
 }
+.user-list-container li {
+  list-style: none;
+  line-height: 3rem;
+}
 .user-account-status,
 .admin-page-container {
   gap: 2rem;
+}
+.back-to-main-btn {
+  background-color: #182747;
+  color: #fd841f;
 }
