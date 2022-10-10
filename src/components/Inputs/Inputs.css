@@ -8,11 +8,14 @@ input {
   background-color: transparent;
 }
 span {
-  color: red;
+  color: rgb(255, 0, 0);
+  text-shadow: 3px 3px 8px black;
+  font-weight: 800;
   font-size: 1rem;
   padding: 0.2rem;
   display: none;
   width: 55ch;
+  letter-spacing: 2px;
 }
 
 input[name="firstName"],

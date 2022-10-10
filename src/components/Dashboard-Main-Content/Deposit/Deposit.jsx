@@ -58,11 +58,12 @@ export default function Deposit({ setUserInfo }) {
   }, [userData]);
 
   return (
-    <>
+    <div className="deposit-container">
       <form onSubmit={handleDepositSubmit} className="deposit-transactions">
-        <h1>Add money to your account</h1>
+        <h1 className="deposit-description">Add money to your account</h1>
         <label>Amount</label>
         <Inputs
+          className="deposit-input"
           type="number"
           min="0"
           step="0.01"
@@ -71,9 +72,9 @@ export default function Deposit({ setUserInfo }) {
           onChange={handleChange}
         />
         <Transactions name="balance" />
-        <Buttons type="submit" name="Deposit" />
+        <Buttons type="submit" name="Deposit" className="deposit-btn" />
       </form>
       <DepositHistory className="deposit-history" />
-    </>
+    </div>
   );
 }

@@ -11,7 +11,6 @@
 
 .sideBar > img {
   height: 30rem;
-  cursor: pointer;
 }
 
 .sideBarList {
@@ -27,7 +26,8 @@
 .settings {
   font-size: 2em;
   margin: 0 0 0.5em 0.5em;
-  color: #fff;
+  color: #182747;
+  cursor: pointer;
 }
 
 .lists {
@@ -35,7 +35,15 @@
   color: #fff;
   text-transform: uppercase;
 }
+#profile {
+  pointer-events: none;
+}
 
 .lists:hover {
   color: #182747;
+}
+.active {
+  color: #182747;
+  font-weight: 1000;
+  text-decoration: double underline;
 }

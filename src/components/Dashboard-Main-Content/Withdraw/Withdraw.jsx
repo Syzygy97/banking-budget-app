@@ -57,11 +57,14 @@ export default function Withdraw({ setUserInfo }) {
   }, [userData]);
 
   return (
-    <>
+    <div className="withdraw-container">
       <form onSubmit={handleWithdrawSubmit} className="withdraw-transactions">
-        <h1 className="withdrawMoney">Withdraw money from your account</h1>
+        <h1 className="withdraw-description">
+          Withdraw money from your account
+        </h1>
         <label>Amount</label>
         <Inputs
+          className="withdraw-input"
           type="number"
           min="0"
           step="0.01"
@@ -70,9 +73,9 @@ export default function Withdraw({ setUserInfo }) {
           onChange={handleChange}
         />
         <Transactions name="balance" />
-        <Buttons name="Withdraw" />
+        <Buttons name="Withdraw" className="withdraw-btn" />
       </form>
       <WithdrawHistory className="withdraw-history" />
-    </>
+    </div>
   );
 }

@@ -36,7 +36,8 @@ export default function AdminSignIn() {
         <form onSubmit={handleSubmit} className="adminSignInComponent">
           <div className="adminUsername">
             <label className="adminUserLabel">Username</label>
-            <Inputs className="userInputAdmin"
+            <Inputs
+              className="userInputAdmin"
               type="text"
               placeholder="enter admin username"
               value={adminUsername}
@@ -45,22 +46,18 @@ export default function AdminSignIn() {
           </div>
           <div className="adminPassword">
             <label className="adminUserLabel">Password</label>
-            <Inputs className="userInputAdmin"
+            <Inputs
+              className="userInputAdmin"
               type="password"
               placeholder="enter admin password"
               value={adminPassword}
               onChange={handleAdminPassword}
             />
           </div>
+          <div className="adminSignInBtn">
+            <Buttons className="signInBtn" type="submit" name="Sign In" />
+          </div>
         </form>
-        <div className="adminSignInBtn">
-        <Buttons
-            className="signInBtn"
-            type="submit"
-            name="Sign In"
-            // onClick={navigateToDashboard}
-          />
-        </div>
       </div>
     </div>
   );

@@ -106,7 +106,7 @@ export default function SignUpPage() {
       step: "0.01",
       placeholder: "enter balance",
       errorMessage:
-        "No negative values and up to hundredths decimal only (ex. Amount.00)",
+        "No negative amount and up to hundredths decimal only (ex. Amount.00)",
       label: "Initial Balance",
       required: true,
     },
@@ -142,8 +142,7 @@ export default function SignUpPage() {
       LOCAL_STORAGE_KEY,
       JSON.stringify([...userDatas, newUserData])
     );
-    console.log("userDatas after submission", userDatas);
-    navigate("/adminPage");
+    navigate("/");
   };
 
   const onChange = (e) => {
@@ -161,12 +160,17 @@ export default function SignUpPage() {
 
   return (
     <div className="signUpPage">
-      <section className="signUpBg"></section>
       <section className="signUpInputsContainer">
-        <img className="signUpLogo" src={digilogo2} alt="logo" onClick={navigateToLandingPage}></img>
+        <img
+          className="signUpLogo"
+          src={digilogo2}
+          alt="logo"
+          onClick={navigateToLandingPage}
+        ></img>
         <form onSubmit={handleSignUpSubmit} className="signUpInputs">
           {dataInputs.map((input) => (
-            <Inputs className="signUpPageInput"
+            <Inputs
+              className="signUpPageInput"
               key={input.id}
               {...input}
               value={userData[input.name]}

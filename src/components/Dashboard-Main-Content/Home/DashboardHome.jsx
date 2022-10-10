@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React from "react";
 import "./DashboardHome.css";
 import DepositHistory from "../../History/Deposit History/DepositHistory";
 import WithdrawHistory from "../../History/Withdraw History/WithdrawHistory";
@@ -9,7 +9,6 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
 } from "recharts";
 
@@ -61,13 +60,12 @@ export default function DashboardHome({ userInfo }) {
   return (
     <div className="dashboardHome">
       <div className="lineGraph">
-        <h1 className="amount">$ {userInfo.balance}</h1>
-        <h3 className="currentBalance">Current Balance</h3>
+        <h1 className="graph-title">Current Cash Flow Overview</h1>
         <figure>
           <div style={{ width: "100%" }}>
             <h4>Deposit History</h4>
 
-            <ResponsiveContainer width="100%" height={180}>
+            <ResponsiveContainer width="100%" height={175}>
               <LineChart
                 width={500}
                 height={200}
@@ -94,7 +92,7 @@ export default function DashboardHome({ userInfo }) {
             </ResponsiveContainer>
             <h4>Withdraw History</h4>
 
-            <ResponsiveContainer width="100%" height={180}>
+            <ResponsiveContainer width="100%" height={175}>
               <LineChart
                 width={500}
                 height={200}
@@ -120,37 +118,6 @@ export default function DashboardHome({ userInfo }) {
               </LineChart>
             </ResponsiveContainer>
           </div>
-          {/* <ResponsiveContainer width="100%" height="100%">
-            <LineChart
-              width={500}
-              height={300}
-              data={data}
-              margin={{
-                top: 5,
-                right: 30,
-                left: 0,
-                bottom: 5,
-              }}
-            >
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name" />
-              <YAxis />
-              <Tooltip />
-              <Legend verticalAlign="top" />
-              <Line
-                type="monotone"
-                dataKey="pv"
-                stroke="#8884d8"
-                activeDot={{ r: 8 }}
-              />
-              <Line
-                type="monotone"
-                dataKey="uv"
-                stroke="#82ca9d"
-                name="NASAN NA"
-              />
-            </LineChart>
-          </ResponsiveContainer> */}
         </figure>
       </div>
       <DepositHistory className="depositHistoryList" />

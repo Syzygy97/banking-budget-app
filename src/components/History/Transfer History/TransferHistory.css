@@ -1,5 +1,5 @@
 .transfer-history {
-  height: 50%;
+  height: 60vh;
   border: 2px solid black;
   background-color: #182747;
   color: #fff;
@@ -11,6 +11,5 @@
 .history-transfer {
   font-size: 2.5rem;
   text-transform: uppercase;
-  color: #fff;
-  padding-top: 2rem;
+  color: #fd841f;
 }
