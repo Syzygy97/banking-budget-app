@@ -12,12 +12,12 @@ function Expense() {
   const [editAmount, setEditAmount] = useState("");
   const [editTitle, setEditTitle] = useState("");
 
-  // useEffect(() => {
-  //   if (localStorage.getItem("expenses")) {
-  //     const storedList = JSON.parse(localStorage.getItem("expenses"));
-  //     setExpenses(storedList);
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (localStorage.getItem("expenses")) {
+      const storedList = JSON.parse(localStorage.getItem("expenses"));
+      setExpenses(storedList);
+    }
+  }, []);
 
   const userExpenses = JSON.parse(localStorage.getItem("expenses"));
 
@@ -109,7 +109,7 @@ function Expense() {
         {expenses.map((expense) => (
           <React.Fragment key={expense.id}>
             <div className="user-expense-container">
-              <h2 className="user-expense-amount">
+              <div className="user-expense-amount">
                 {editing === expense.id ? (
                   <input
                     className="input-edit"
@@ -118,9 +118,9 @@ function Expense() {
                     onChange={(e) => setEditAmount(e.target.value)}
                   />
                 ) : (
-                  <span>₱{parseFloat(expense.amount).toFixed(2)}</span>
+                  <span>₱{expense.amount}</span>
                 )}
-              </h2>
+              </div>
               <h2 className="user-expense-amount">
                 {editing === expense.id ? (
                   <input
@@ -145,14 +145,12 @@ function Expense() {
                         onClick={() => handleUpdate(expense)}
                       />
                     ) : (
-                      <button className="user-expense-edit">
-                        <img
-                          className="edit-logo"
-                          src={edit}
-                          alt="pencil logo"
-                          onClick={() => handleEdit(expense)}
-                        />
-                      </button>
+                      <img
+                        className="edit-logo"
+                        src={edit}
+                        alt="pencil logo"
+                        onClick={() => handleEdit(expense)}
+                      />
                     )}
                   </button>
                   <button
