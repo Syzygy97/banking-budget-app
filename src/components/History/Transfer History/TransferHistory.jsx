@@ -4,7 +4,7 @@ import "./TransferHistory.css";
 export default function TransferHistory() {
   return (
     <div className="transfer-history">
-      <h1>Transfer History</h1>
+      <h1 className="history-transfer">Transfer History</h1>
     </div>
   );
 }

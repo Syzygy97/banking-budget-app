@@ -3,6 +3,7 @@
   margin: 0;
   box-sizing: border-box;
 }
+
 .signUpPage {
   display: flex;
   gap: 5px;
@@ -11,23 +12,30 @@
   height: 100vh;
   width: 100%;
   overflow: hidden;
+  background-image: url(../../assets/signupbg.jpg);
+  /* background-color: #fd841f; */
+  background-size: cover;
+  background-repeat: no-repeat;
 }
-.signUpBg,
+
 .signUpInputsContainer {
-  border-radius: 50px;
-  border: 2px solid black;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px #000;
+  background-color: #182747;
 }
-.signUpBg {
+
+/* .signUpBg {
   width: 60%;
   height: 100%;
   background-image: url(../../assets/plantWithMoney.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position-x: 70%;
-}
+} */
+
 .signUpInputsContainer {
-  width: 40%;
-  height: 100%;
+  width: 30vw;
+  height: 95.5vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -38,20 +46,43 @@
   margin-bottom: 2rem;
   cursor: pointer;
 }
+
 .signUpInputs {
   display: flex;
   gap: 1rem;
   flex-direction: column;
 }
+
 .signUpInputs label,
 .signUpInputs > div {
   margin-bottom: 1rem;
+  color: #fff;
+  font-size: 1.5rem;
+  text-transform: uppercase;
 }
+
+.signUpPageInput {
+  width: 50ch;
+  border-bottom: 1.5px solid #fff;
+  padding: 1rem 2rem;
+}
+
 .signUpInputs > div {
   display: flex;
   flex-direction: column;
 }
 
 .signUpInputs {
-  margin-bottom: 1em;
+  padding-top: 3rem;
+}
+
+.btnDiv {
+  padding-top: 5rem;
+  align-items: center;
+}
+
+.createAccountBtn {
+  background-color: #fd841f;
+  color: #fff;
+  width: 17rem;
 }

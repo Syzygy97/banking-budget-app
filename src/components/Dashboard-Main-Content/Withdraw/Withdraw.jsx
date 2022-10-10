@@ -59,7 +59,7 @@ export default function Withdraw({ setUserInfo }) {
   return (
     <>
       <form onSubmit={handleWithdrawSubmit} className="withdraw-transactions">
-        <h1>Withdraw money from your account</h1>
+        <h1 className="withdrawMoney">Withdraw money from your account</h1>
         <label>Amount</label>
         <Inputs
           type="number"

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./SignIn.css";
-import logo from "../../assets/yourLogoHere.png";
+import digilogo from "../../assets/digilogo.png";
 import Inputs from "../Inputs/Inputs";
 import Buttons from "../Buttons/Buttons";
 import { useNavigate } from "react-router-dom";
@@ -78,13 +78,13 @@ export default function SignIn() {
 
   return (
     <div className="sign-in-container">
-      <img src={logo} alt="logo"></img>
+      <img className="signInLogo" src={digilogo} alt="logo"></img>
       <div className="userAccessButtons">
-        <Buttons name="SIGN UP" onClick={navigateToSignUpPage} />
+        <Buttons className="signUpBtn" name="SIGN UP" onClick={navigateToSignUpPage} />
       </div>
       <form onSubmit={handleSubmit} className="signInComponent">
         <div className="username">
-          <label>Username</label>
+          <label className="labelName">Username</label>
           <Inputs
             type="text"
             name="username"
@@ -97,7 +97,7 @@ export default function SignIn() {
           />
         </div>
         <div className="password">
-          <label>Password</label>
+          <label className="labelName">Password</label>
           <Inputs
             type="password"
             name="password"

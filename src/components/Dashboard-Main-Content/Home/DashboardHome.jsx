@@ -61,8 +61,8 @@ export default function DashboardHome({ userInfo }) {
   return (
     <div className="dashboardHome">
       <div className="lineGraph">
-        <h1>$ {userInfo.balance}</h1>
-        <h3>Current Balance</h3>
+        <h1 className="amount">$ {userInfo.balance}</h1>
+        <h3 className="currentBalance">Current Balance</h3>
         <figure>
           <div style={{ width: "100%" }}>
             <h4>Deposit History</h4>

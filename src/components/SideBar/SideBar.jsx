@@ -1,6 +1,6 @@
 import React from "react";
 import "./SideBar.css";
-import logo from "../../assets/yourLogoHere.png";
+import digibank1 from "../../assets/digibank1.png";
 import { NavLink, useNavigate } from "react-router-dom";
 
 export default function SideBar() {
@@ -10,25 +10,25 @@ export default function SideBar() {
   }
   return (
     <nav className="sideBar">
-      <img src={logo} alt="logo" onClick={navigateToLandingPage} />
+      <img src={digibank1} alt="logo" onClick={navigateToLandingPage} />
       <ul className="sideBarList">
         <li>
-          <NavLink to="home">Home</NavLink>
+          <NavLink className="lists" to="home">Home</NavLink>
         </li>
         <li>
-          <NavLink to="expenses">Planned Expenses</NavLink>
+          <NavLink className="lists" to="expenses">Planned Expenses</NavLink>
         </li>
         <li>
-          <NavLink to="deposit">Deposit</NavLink>
+          <NavLink className="lists" to="deposit">Deposit</NavLink>
         </li>
         <li>
-          <NavLink to="withdraw">Withdraw</NavLink>
+          <NavLink className="lists" to="withdraw">Withdraw</NavLink>
         </li>
         <li>
-          <NavLink to="transfer">Transfer</NavLink>
+          <NavLink className="lists" to="transfer">Transfer</NavLink>
         </li>
         <li>
-          <NavLink to="profile">Profile</NavLink>
+          <NavLink className="lists" to="profile">Profile</NavLink>
         </li>
       </ul>
       <div className="settings">⚙</div>

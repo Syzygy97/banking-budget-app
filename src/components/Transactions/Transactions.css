@@ -10,3 +10,34 @@
   justify-content: center;
   align-items: center;
 }
+
+.withdraw-amount {
+  font-size: 2rem; 
+}
+
+.withdraw-input {
+  color: #fff;
+  font-size: 1.6rem;
+}
+
+.notes-label {
+  font-size: 1.5rem;
+  padding-top: 3rem;
+  text-transform: uppercase;
+}
+
+.notes-section {
+  border: none;
+  width: 30rem;
+}
+
+.confirm-btn {
+  background-color: gray;
+  color: #fff;
+  font-weight: 500;
+}
+
+.confirm-btn:hover {
+  color: #182747;
+  font-weight: 500;
+}
