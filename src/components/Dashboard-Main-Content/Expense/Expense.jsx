@@ -12,13 +12,12 @@ function Expense() {
   const [editAmount, setEditAmount] = useState("");
   const [editTitle, setEditTitle] = useState("");
 
-
-  useEffect(() => {
-    if (localStorage.getItem("expenses")) {
-      const storedList = JSON.parse(localStorage.getItem("expenses"));
-      setExpenses(storedList);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (localStorage.getItem("expenses")) {
+  //     const storedList = JSON.parse(localStorage.getItem("expenses"));
+  //     setExpenses(storedList);
+  //   }
+  // }, []);
 
   const userExpenses = JSON.parse(localStorage.getItem("expenses"));
 
@@ -78,6 +77,7 @@ function Expense() {
             type="number"
             value={expense}
             className="user-input"
+            min="0"
             onChange={(e) => setExpense(e.target.value)}
           />
         </label>
@@ -113,13 +113,14 @@ function Expense() {
                     className="input-edit"
                     type="text"
                     value={editAmount}
+                    min="0"
                     onChange={(e) => setEditAmount(e.target.value)}
                   />
                 ) : (
-                  <span>₱{expense.amount}</span>
+                  <p className="input-result">₱{expense.amount}</p>
                 )}
               </div>
-              <h2 className="user-expense-amount">
+              <div className="user-expense-amount">
                 {editing === expense.id ? (
                   <input
                     className="input-edit"
@@ -129,9 +130,9 @@ function Expense() {
                     onChange={(e) => setEditTitle(e.target.value)}
                   />
                 ) : (
-                  <span>{expense.title}</span>
+                  <p className="input-result">{expense.title}</p>
                 )}
-              </h2>
+              </div>
               <div className="user-expense-delete-container">
                 <div className="user-expense-buttons">
                   <button className="user-expense-edit">
