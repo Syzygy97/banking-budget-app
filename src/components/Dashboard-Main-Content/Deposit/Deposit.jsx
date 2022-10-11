@@ -17,7 +17,7 @@ export default function Deposit({ setUserInfo }) {
     setToDeposit(e.target.value);
   };
   const updateAdminUserData = () => {
-    const currentUser = adminUserData.map((user) => {
+    const currentUserLists = adminUserData.map((user) => {
       if (
         user.username.includes(userData.username) &&
         user.password.includes(userData.password)
@@ -27,7 +27,7 @@ export default function Deposit({ setUserInfo }) {
         return user;
       }
     });
-    setAdminUserData(currentUser);
+    setAdminUserData(currentUserLists);
   };
 
   useEffect(() => {
@@ -51,6 +51,12 @@ export default function Deposit({ setUserInfo }) {
         "signedInData",
         JSON.stringify({ ...userData, balance: newBalance })
       );
+      // const newGraphData = {
+      //   name: "2022-10-12",
+      //   de: toDeposit,
+      //   ex: 9800,
+      //   amt: 2290,
+      // };
     }
   };
   useEffect(() => {

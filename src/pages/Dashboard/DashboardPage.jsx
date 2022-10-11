@@ -32,7 +32,10 @@ export default function DashboardPage() {
               path="withdraw"
               element={<Withdraw setUserInfo={setUserInfo} />}
             />
-            <Route path="transfer" element={<Transfer />} />
+            <Route
+              path="transfer"
+              element={<Transfer setUserInfo={setUserInfo} />}
+            />
             <Route path="profile" element={<Profile />} />
           </Route>
         </Routes>

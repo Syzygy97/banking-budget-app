@@ -16,6 +16,7 @@ span {
   display: none;
   width: 55ch;
   letter-spacing: 2px;
+  margin: 0 auto;
 }
 
 input[name="firstName"],

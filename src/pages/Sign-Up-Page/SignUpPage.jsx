@@ -10,6 +10,7 @@ const LOCAL_STORAGE_KEY = "userKey";
 
 export default function SignUpPage() {
   const navigate = useNavigate();
+  const [isError, setIsError] = useState(false);
   const [userData, setUserData] = useState({
     firstName: "",
     middleName: "",
@@ -21,7 +22,11 @@ export default function SignUpPage() {
     balance: "",
   });
   const [userDatas, setUserDatas] = useState([]);
-
+  const LOCAL_USER_DATA = JSON.parse(localStorage.getItem("userKey"));
+  const userListUsernames = LOCAL_USER_DATA.map((user) => {
+    return user.username;
+  });
+  console.log("userdata", userData.username);
   const dataInputs = [
     {
       id: 1,
@@ -111,6 +116,7 @@ export default function SignUpPage() {
       required: true,
     },
   ];
+  console.log(userListUsernames);
   const handleSignUpSubmit = (e) => {
     e.preventDefault();
     const newUserData = {
@@ -124,25 +130,31 @@ export default function SignUpPage() {
       confirmPassword: userData.confirmPassword,
       balance: parseFloat(userData.balance, 10).toString(),
     };
-    setUserData({
-      ...userData,
-      firstName: "",
-      middleName: "",
-      lastName: "",
-      username: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-      balance: "",
-    });
-    setUserDatas((prevData) => {
-      return [...prevData, newUserData];
-    });
-    localStorage.setItem(
-      LOCAL_STORAGE_KEY,
-      JSON.stringify([...userDatas, newUserData])
-    );
-    navigate("/");
+    if (userListUsernames.some((item) => item === userData.username)) {
+      setIsError(true);
+      console.log("failed");
+      return;
+    } else {
+      setUserData({
+        ...userData,
+        firstName: "",
+        middleName: "",
+        lastName: "",
+        username: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+        balance: "",
+      });
+      setUserDatas((prevData) => {
+        return [...prevData, newUserData];
+      });
+      localStorage.setItem(
+        LOCAL_STORAGE_KEY,
+        JSON.stringify([...userDatas, newUserData])
+      );
+      navigate("/");
+    }
   };
 
   const onChange = (e) => {
@@ -157,7 +169,10 @@ export default function SignUpPage() {
     const localUserData = JSON.parse(localStorage.getItem("userKey"));
     if (localUserData) setUserDatas(localUserData);
   }, []);
-
+  const handleUsernameClick = (e) => {
+    e.preventDefault();
+    setIsError(false);
+  };
   return (
     <div className="signUpPage">
       <section className="signUpInputsContainer">
@@ -175,10 +190,18 @@ export default function SignUpPage() {
               {...input}
               value={userData[input.name]}
               onChange={onChange}
+              onClick={handleUsernameClick}
             />
           ))}
-          <Buttons type="submit" name="Create Account" />
+          <Buttons
+            className="sign-up-btn"
+            type="submit"
+            name="Create Account"
+          />
         </form>
+        <h2 className={isError ? "invalid" : "valid"}>
+          USERNAME ALREADY TAKEN
+        </h2>
       </section>
     </div>
   );
