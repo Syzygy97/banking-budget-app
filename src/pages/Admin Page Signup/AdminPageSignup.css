@@ -1,0 +1,14 @@
+.signUpInputsContainer {
+  height: 98%;
+  width: 20vw;
+  box-shadow: none;
+  /* margin-top: 2rem; */
+}
+
+.create-btn {
+  margin-top: 3rem;
+}
+
+.signUpPageInput {
+  width: 25rem;
+}
