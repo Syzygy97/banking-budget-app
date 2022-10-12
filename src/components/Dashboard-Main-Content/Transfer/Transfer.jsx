@@ -5,6 +5,8 @@ import TransferHistory from "../../History/Transfer History/TransferHistory";
 import Inputs from "../../Inputs/Inputs";
 import Buttons from "../../Buttons/Buttons";
 
+const TRANSFER_HISTORY_KEY = "transferHistory";
+
 export default function Transfer({ setUserInfo }) {
   const LOCAL_SIGNED_IN_DATA = JSON.parse(localStorage.getItem("signedInData"));
   const LOCAL_ADMIN_DATA = JSON.parse(localStorage.getItem("userKey"));
@@ -12,8 +14,8 @@ export default function Transfer({ setUserInfo }) {
   const [sender, setSender] = useState(LOCAL_SIGNED_IN_DATA);
   const [receiverUsername, setReceiverUsername] = useState("");
   const [receiverAccount, setReceiverAccount] = useState([]);
-  const [updatedReceiverAccount, setUpdatedReceiverAccount] = useState([]);
   const [toTransfer, setToTransfer] = useState("");
+  const [transferHistory, setTransferHistory] = useState([]);
 
   const handleChange = (e) => {
     setToTransfer(e.target.value);
@@ -32,7 +34,6 @@ export default function Transfer({ setUserInfo }) {
       }
     });
     setAdminUserData(userLists);
-    console.log("userLists", userLists);
   };
   useEffect(() => {
     localStorage.setItem("userKey", JSON.stringify(adminUserData));
@@ -40,7 +41,12 @@ export default function Transfer({ setUserInfo }) {
   useEffect(() => {
     updateCurrentUserBalance();
   }, [sender]);
-
+  useEffect(() => {
+    const transfer_history = JSON.parse(
+      localStorage.getItem("transferHistory")
+    );
+    if (transfer_history) setTransferHistory(transfer_history);
+  }, []);
   const userListUsernames = adminUserData.map((user) => {
     return user.username;
   });
@@ -49,24 +55,20 @@ export default function Transfer({ setUserInfo }) {
     const receiverUserAccount = adminUserData.find((user) => {
       return user.username === receiverUsername;
     });
-    console.log("receiver account", receiverAccount);
     setReceiverAccount(receiverUserAccount);
   };
 
   useEffect(() => {
     getReceiverAccount();
   }, [receiverUsername]);
-  console.log("receiver accounttt", receiverAccount);
 
   const handleTransfer = (e) => {
     e.preventDefault();
     if (toTransfer === "" || receiverUsername === sender.username) {
       alert("You can't send money to yourself!");
-      console.log("You cant send money to yourself");
       return;
     } else if (!userListUsernames.includes(receiverUsername)) {
       alert("Account does not exist!");
-      console.log("account does not exist");
       return;
     } else {
       const newSenderBalance = parseFloat(
@@ -76,6 +78,9 @@ export default function Transfer({ setUserInfo }) {
       const newReceiverBalance = (
         parseFloat(toTransfer, 10) + parseFloat(receiverAccount.balance)
       ).toString();
+      const now = new Date();
+      const date = now.toDateString();
+      const time = now.toLocaleTimeString();
       setSender({ ...sender, balance: newSenderBalance });
       setUserInfo({ ...sender, balance: newSenderBalance });
       setReceiverAccount({ ...receiverAccount, balance: newReceiverBalance });
@@ -84,6 +89,31 @@ export default function Transfer({ setUserInfo }) {
         JSON.stringify({ ...sender, balance: newSenderBalance })
       );
       setToTransfer("");
+      setTransferHistory((prevData) => {
+        return [
+          ...prevData,
+          {
+            user: sender.username,
+            receiver: receiverUsername,
+            balance: toTransfer,
+            date: date,
+            time: time,
+          },
+        ];
+      });
+      localStorage.setItem(
+        TRANSFER_HISTORY_KEY,
+        JSON.stringify([
+          ...transferHistory,
+          {
+            user: sender.username,
+            receiver: receiverUsername,
+            balance: toTransfer,
+            date: date,
+            time: time,
+          },
+        ])
+      );
       alert("Transfer Successful!");
     }
   };

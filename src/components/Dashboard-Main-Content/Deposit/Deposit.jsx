@@ -85,12 +85,6 @@ export default function Deposit({ setUserInfo }) {
         ])
       );
       alert("Deposit Successful!");
-      // const newGraphData = {
-      //   name: "2022-10-12",
-      //   de: toDeposit,
-      //   ex: 9800,
-      //   amt: 2290,
-      // };
     }
   };
   useEffect(() => {

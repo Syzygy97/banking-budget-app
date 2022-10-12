@@ -19,10 +19,7 @@ export default function DashboardPage() {
       <main>
         <Routes>
           <Route>
-            <Route
-              path="home"
-              element={<DashboardHome userInfo={userInfo} />}
-            />
+            <Route path="home" element={<DashboardHome />} />
             <Route path="expenses" element={<Expense />} />
             <Route
               path="deposit"
