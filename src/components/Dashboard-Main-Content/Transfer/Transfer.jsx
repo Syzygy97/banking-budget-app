@@ -61,9 +61,11 @@ export default function Transfer({ setUserInfo }) {
   const handleTransfer = (e) => {
     e.preventDefault();
     if (toTransfer === "" || receiverUsername === sender.username) {
-      console.log("you cant send money to yourself");
+      alert("You can't send money to yourself!");
+      console.log("You cant send money to yourself");
       return;
     } else if (!userListUsernames.includes(receiverUsername)) {
+      alert("Account does not exist!");
       console.log("account does not exist");
       return;
     } else {
@@ -82,6 +84,7 @@ export default function Transfer({ setUserInfo }) {
         JSON.stringify({ ...sender, balance: newSenderBalance })
       );
       setToTransfer("");
+      alert("Transfer Successful!");
     }
   };
 

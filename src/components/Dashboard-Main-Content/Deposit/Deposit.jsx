@@ -5,12 +5,15 @@ import Transactions from "../../Transactions/Transactions";
 import Buttons from "../../Buttons/Buttons";
 import Inputs from "../../Inputs/Inputs";
 
+const DEPOSIT_HISTORY_KEY = "depositHistory";
+
 export default function Deposit({ setUserInfo }) {
   const LOCAL_SIGNED_IN_DATA = JSON.parse(localStorage.getItem("signedInData"));
   const LOCAL_ADMIN_DATA = JSON.parse(localStorage.getItem("userKey"));
   const [adminUserData, setAdminUserData] = useState(LOCAL_ADMIN_DATA);
   const [userData, setUserData] = useState(LOCAL_SIGNED_IN_DATA);
   const [toDeposit, setToDeposit] = useState("");
+  const [depositHistory, setDepositHistory] = useState([]);
   const { balance } = userData;
 
   const handleChange = (e) => {
@@ -33,6 +36,10 @@ export default function Deposit({ setUserInfo }) {
   useEffect(() => {
     localStorage.setItem("userKey", JSON.stringify(adminUserData));
   }, [adminUserData]);
+  useEffect(() => {
+    const deposit_history = JSON.parse(localStorage.getItem("depositHistory"));
+    if (deposit_history) setDepositHistory(deposit_history);
+  }, []);
 
   const handleDepositSubmit = (e) => {
     e.preventDefault();
@@ -44,13 +51,40 @@ export default function Deposit({ setUserInfo }) {
       const newBalance = (
         parseFloat(toDeposit, 10) + parseFloat(balance, 10)
       ).toString();
+      const now = new Date();
+      const date = now.toDateString();
+      const time = now.toLocaleTimeString();
       setUserData({ ...userData, balance: newBalance });
       setUserInfo({ ...userData, balance: newBalance });
       setToDeposit("");
+      setDepositHistory((prevData) => {
+        return [
+          ...prevData,
+          {
+            user: userData.username,
+            balance: toDeposit,
+            date: date,
+            time: time,
+          },
+        ];
+      });
       localStorage.setItem(
         "signedInData",
         JSON.stringify({ ...userData, balance: newBalance })
       );
+      localStorage.setItem(
+        DEPOSIT_HISTORY_KEY,
+        JSON.stringify([
+          ...depositHistory,
+          {
+            user: userData.username,
+            balance: toDeposit,
+            date: date,
+            time: time,
+          },
+        ])
+      );
+      alert("Deposit Successful!");
       // const newGraphData = {
       //   name: "2022-10-12",
       //   de: toDeposit,
