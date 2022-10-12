@@ -70,14 +70,13 @@ export default function Transfer({ setUserInfo }) {
     } else if (!userListUsernames.includes(receiverUsername)) {
       alert("Account does not exist!");
       return;
+    } else if (toTransfer > sender.balance) {
+      alert("Insufficient balance");
+      return;
     } else {
-      const newSenderBalance = parseFloat(
-        sender.balance - toTransfer,
-        10
-      ).toString();
-      const newReceiverBalance = (
-        parseFloat(toTransfer, 10) + parseFloat(receiverAccount.balance)
-      ).toString();
+      const newSenderBalance = parseFloat(sender.balance - toTransfer, 10);
+      const newReceiverBalance =
+        parseFloat(toTransfer, 10) + parseFloat(receiverAccount.balance);
       const now = new Date();
       const date = now.toDateString();
       const time = now.toLocaleTimeString();
@@ -95,7 +94,7 @@ export default function Transfer({ setUserInfo }) {
           {
             user: sender.username,
             receiver: receiverUsername,
-            balance: toTransfer,
+            balance: parseFloat(toTransfer),
             date: date,
             time: time,
           },
@@ -108,7 +107,7 @@ export default function Transfer({ setUserInfo }) {
           {
             user: sender.username,
             receiver: receiverUsername,
-            balance: toTransfer,
+            balance: parseFloat(toTransfer),
             date: date,
             time: time,
           },

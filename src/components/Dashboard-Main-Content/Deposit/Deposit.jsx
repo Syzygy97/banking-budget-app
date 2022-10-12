@@ -48,9 +48,7 @@ export default function Deposit({ setUserInfo }) {
       setUserData({ ...userData, balance: sameBalance });
       setUserInfo({ ...userData, balance: sameBalance });
     } else {
-      const newBalance = (
-        parseFloat(toDeposit, 10) + parseFloat(balance, 10)
-      ).toString();
+      const newBalance = parseFloat(toDeposit, 10) + parseFloat(balance, 10);
       const now = new Date();
       const date = now.toDateString();
       const time = now.toLocaleTimeString();
@@ -62,7 +60,7 @@ export default function Deposit({ setUserInfo }) {
           ...prevData,
           {
             user: userData.username,
-            balance: toDeposit,
+            balance: parseFloat(toDeposit),
             date: date,
             time: time,
           },
@@ -78,7 +76,7 @@ export default function Deposit({ setUserInfo }) {
           ...depositHistory,
           {
             user: userData.username,
-            balance: toDeposit,
+            balance: parseFloat(toDeposit),
             date: date,
             time: time,
           },

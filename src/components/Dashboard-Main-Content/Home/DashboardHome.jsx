@@ -39,7 +39,6 @@ export default function DashboardHome() {
 
   const slicedCurrentDepositData = currentUserDeposit.slice(-7);
   const depositData = [...slicedCurrentDepositData];
-
   const slicedCurrentWithdrawData = currentUserWithdraw.slice(-7);
   const withdrawData = [...slicedCurrentWithdrawData];
 

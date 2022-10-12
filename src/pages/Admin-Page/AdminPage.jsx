@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Buttons from "../../components/Buttons/Buttons";
 import AdminPageSignup from "../Admin Page Signup/AdminPageSignup";
-// import SignUpPage from "../Sign-Up-Page/SignUpPage";
 import "./AdminPage.css";
 
 export default function AdminPage() {

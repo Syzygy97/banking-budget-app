@@ -47,12 +47,14 @@ export default function Withdraw({ setUserInfo }) {
   const handleWithdrawSubmit = (e) => {
     e.preventDefault();
     if (toWithdraw === "") {
-      const sameBalance = (0 + parseFloat(balance, 10)).toString();
+      const sameBalance = 0 + parseFloat(balance, 10);
       setUserData({ ...userData, balance: sameBalance });
       setUserInfo({ ...userData, balance: sameBalance });
+    } else if (toWithdraw > balance) {
+      alert("Insufficient balance");
+      return;
     } else {
-      const newBalance =
-        parseFloat(balance, 10).toString() - parseFloat(toWithdraw, 10);
+      const newBalance = parseFloat(balance, 10) - parseFloat(toWithdraw, 10);
       const now = new Date();
       const date = now.toDateString();
       const time = now.toLocaleTimeString();
@@ -64,7 +66,7 @@ export default function Withdraw({ setUserInfo }) {
           ...prevData,
           {
             user: userData.username,
-            balance: toWithdraw,
+            balance: parseFloat(toWithdraw),
             date: date,
             time: time,
           },
@@ -80,7 +82,7 @@ export default function Withdraw({ setUserInfo }) {
           ...withdrawHistory,
           {
             user: userData.username,
-            balance: toWithdraw,
+            balance: parseFloat(toWithdraw),
             date: date,
             time: time,
           },
