@@ -22,11 +22,16 @@ export default function SignUpPage() {
     balance: "",
   });
   const [userDatas, setUserDatas] = useState([]);
-  const LOCAL_USER_DATA = JSON.parse(localStorage.getItem("userKey"));
-  const userListUsernames = LOCAL_USER_DATA.map((user) => {
+  const [local, setLocal] = useState([]);
+  // const LOCAL_USER_DATA = JSON.parse(localStorage.getItem("userKey"));
+  const userListUsernames = local.map((user) => {
     return user.username;
   });
   console.log("userdata", userData.username);
+  useEffect(() => {
+    const LOCAL_USER_DATA = JSON.parse(localStorage.getItem("userKey"));
+    if (LOCAL_USER_DATA) setLocal(LOCAL_USER_DATA);
+  }, []);
   const dataInputs = [
     {
       id: 1,
