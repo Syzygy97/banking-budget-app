@@ -50,6 +50,9 @@
   text-align: center;
   margin-top: 4rem;
 }
-.signInBtn {
+.signInBtn,
+.userAccessButtons > button {
+  background-color: #182747;
+  color: #fd841f;
   cursor: pointer;
 }

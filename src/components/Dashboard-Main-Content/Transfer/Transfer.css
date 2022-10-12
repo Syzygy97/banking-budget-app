@@ -19,7 +19,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 2.5rem;
+  gap: 2.25rem;
   height: 50%;
   background-color: #182747;
   color: #fd841f;
@@ -40,7 +40,7 @@
   color: #fd841f;
 }
 .transfer-input {
-  width: 55ch;
+  width: 30ch;
   color: white;
   border-color: white;
 }
@@ -52,4 +52,24 @@
 .transfer-btn:hover {
   color: white;
   font-weight: 700;
+}
+.transfer-inputs {
+  display: flex;
+  gap: 5rem;
+}
+.transfer-inputs label {
+  font-size: 1.5rem;
+}
+.transfer-amount,
+.receiver-name {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.receiver-name-input {
+  border-color: white;
+  color: white;
 }

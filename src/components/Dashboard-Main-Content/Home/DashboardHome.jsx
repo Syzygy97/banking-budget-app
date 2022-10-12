@@ -2,122 +2,96 @@ import React from "react";
 import "./DashboardHome.css";
 import DepositHistory from "../../History/Deposit History/DepositHistory";
 import WithdrawHistory from "../../History/Withdraw History/WithdrawHistory";
+import { Chart } from "react-google-charts";
 import {
-  LineChart,
-  Line,
+  AreaChart,
+  Area,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
+  Legend,
   ResponsiveContainer,
 } from "recharts";
 
-export default function DashboardHome({ userInfo }) {
-  const data = [
-    {
-      name: "2022-10-10",
-      uv: 4000,
-      pv: 2400,
-      amt: 2400,
-    },
-    {
-      name: "2022-10-11",
-      uv: 3000,
-      pv: 1398,
-      amt: 2210,
-    },
-    {
-      name: "2022-10-12",
-      uv: 2000,
-      pv: 9800,
-      amt: 2290,
-    },
-    {
-      name: "2022-10-13",
-      uv: 2780,
-      pv: 3908,
-      amt: 2000,
-    },
-    {
-      name: "2022-10-14",
-      uv: 1890,
-      pv: 4800,
-      amt: 2181,
-    },
-    {
-      name: "2022-10-15",
-      uv: 2390,
-      pv: 3800,
-      amt: 2500,
-    },
-    {
-      name: "2022-10-16",
-      uv: 3490,
-      pv: 4300,
-      amt: 2100,
-    },
-  ];
+export default function DashboardHome() {
+  const LOCAL_SIGNED_IN_DATA = JSON.parse(localStorage.getItem("signedInData"));
+  const DEPOSIT_HISTORY = JSON.parse(localStorage.getItem("depositHistory"));
+  console.log([DEPOSIT_HISTORY]);
+  const WITHDRAW_HISTORY = JSON.parse(localStorage.getItem("withdrawHistory"));
+  console.log([WITHDRAW_HISTORY]);
+  const currentUserDeposit = DEPOSIT_HISTORY.filter((current) => {
+    return current.user === LOCAL_SIGNED_IN_DATA.username;
+  });
+  const currentUserWithdraw = WITHDRAW_HISTORY.filter((current) => {
+    return current.user === LOCAL_SIGNED_IN_DATA.username;
+  });
+
+  const slicedCurrentDepositData = currentUserDeposit.slice(-7);
+  const depositData = [...slicedCurrentDepositData];
+
+  const slicedCurrentWithdrawData = currentUserWithdraw.slice(-7);
+  const withdrawData = [...slicedCurrentWithdrawData];
+
   return (
     <div className="dashboardHome">
       <div className="lineGraph">
         <h1 className="graph-title">Current Cash Flow Overview</h1>
         <figure>
-          <div style={{ width: "100%" }}>
-            <h4>Deposit History</h4>
-
-            <ResponsiveContainer width="100%" height={175}>
-              <LineChart
-                width={500}
-                height={200}
-                data={data}
-                syncId="anyId"
-                margin={{
-                  top: 10,
-                  right: 30,
-                  left: 0,
-                  bottom: 0,
-                }}
-              >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Line
-                  type="monotone"
-                  dataKey="uv"
-                  stroke="#8884d8"
-                  fill="#8884d8"
-                />
-              </LineChart>
-            </ResponsiveContainer>
-            <h4>Withdraw History</h4>
-
-            <ResponsiveContainer width="100%" height={175}>
-              <LineChart
-                width={500}
-                height={200}
-                data={data}
-                syncId="anyId"
-                margin={{
-                  top: 10,
-                  right: 30,
-                  left: 0,
-                  bottom: 0,
-                }}
-              >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Line
-                  type="monotone"
-                  dataKey="pv"
-                  stroke="#82ca9d"
-                  fill="#82ca9d"
-                />
-              </LineChart>
-            </ResponsiveContainer>
-          </div>
+          <h3>DEPOSIT HISTORY</h3>
+          <ResponsiveContainer width="100%" height="42%">
+            <AreaChart
+              width={500}
+              height={300}
+              data={depositData}
+              margin={{
+                top: 5,
+                right: 30,
+                left: 20,
+                bottom: 5,
+              }}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="date" />
+              <YAxis domain={[0, "auto"]} />
+              <Tooltip />
+              {/* <Legend /> */}
+              <Area
+                type="monotone"
+                dataKey="balance"
+                stroke="#8884d8"
+                activeDot={{ r: 8 }}
+              />
+              <Area type="monotone" dataKey="balance" stroke="#82ca9d" />
+            </AreaChart>
+          </ResponsiveContainer>
+          <h3>WITHDRAW HISTORY</h3>
+          <ResponsiveContainer width="100%" height="42%">
+            <AreaChart
+              width={500}
+              height={300}
+              data={withdrawData}
+              margin={{
+                top: 5,
+                right: 30,
+                left: 20,
+                bottom: 5,
+              }}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="date" />
+              <YAxis domain={[0, "auto"]} />
+              <Tooltip />
+              {/* <Legend /> */}
+              <Area
+                type="monotone"
+                dataKey="balance"
+                stroke="#8884d8"
+                activeDot={{ r: 8 }}
+              />
+              <Area type="monotone" dataKey="balance" stroke="#82ca9d" />
+            </AreaChart>
+          </ResponsiveContainer>
         </figure>
       </div>
       <DepositHistory className="depositHistoryList" />

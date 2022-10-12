@@ -5,12 +5,16 @@ import Inputs from "../../Inputs/Inputs";
 import Transactions from "../../Transactions/Transactions";
 import "./Withdraw.css";
 
+const WITHDRAW_HISTORY_KEY = "withdrawHistory";
+
 export default function Withdraw({ setUserInfo }) {
   const LOCAL_SIGNED_IN_DATA = JSON.parse(localStorage.getItem("signedInData"));
   const LOCAL_ADMIN_DATA = JSON.parse(localStorage.getItem("userKey"));
   const [adminUserData, setAdminUserData] = useState(LOCAL_ADMIN_DATA);
   const [userData, setUserData] = useState(LOCAL_SIGNED_IN_DATA);
   const [toWithdraw, setToWithdraw] = useState("");
+  const [withdrawHistory, setWithdrawHistory] = useState([]);
+
   const { balance } = userData;
 
   const handleChange = (e) => {
@@ -33,6 +37,12 @@ export default function Withdraw({ setUserInfo }) {
   useEffect(() => {
     localStorage.setItem("userKey", JSON.stringify(adminUserData));
   }, [adminUserData]);
+  useEffect(() => {
+    const withdraw_history = JSON.parse(
+      localStorage.getItem("withdrawHistory")
+    );
+    if (withdraw_history) setWithdrawHistory(withdraw_history);
+  }, []);
 
   const handleWithdrawSubmit = (e) => {
     e.preventDefault();
@@ -43,13 +53,40 @@ export default function Withdraw({ setUserInfo }) {
     } else {
       const newBalance =
         parseFloat(balance, 10).toString() - parseFloat(toWithdraw, 10);
+      const now = new Date();
+      const date = now.toDateString();
+      const time = now.toLocaleTimeString();
       setUserData({ ...userData, balance: newBalance });
       setUserInfo({ ...userData, balance: newBalance });
       setToWithdraw("");
+      setWithdrawHistory((prevData) => {
+        return [
+          ...prevData,
+          {
+            user: userData.username,
+            balance: toWithdraw,
+            date: date,
+            time: time,
+          },
+        ];
+      });
       localStorage.setItem(
         "signedInData",
         JSON.stringify({ ...userData, balance: newBalance })
       );
+      localStorage.setItem(
+        WITHDRAW_HISTORY_KEY,
+        JSON.stringify([
+          ...withdrawHistory,
+          {
+            user: userData.username,
+            balance: toWithdraw,
+            date: date,
+            time: time,
+          },
+        ])
+      );
+      alert("Withdraw Successful!");
     }
   };
   useEffect(() => {
