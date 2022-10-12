@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./WithdrawHistory.css";
 
 export default function WithdrawHistory(props) {
-  const WITHDRAW_HISTORY = JSON.parse(localStorage.getItem("withdrawHistory"));
+  // const WITHDRAW_HISTORY = JSON.parse(localStorage.getItem("withdrawHistory"));
   const LOCAL_SIGNED_IN_DATA = JSON.parse(localStorage.getItem("signedInData"));
-  const currentUser = WITHDRAW_HISTORY.filter((current) => {
+  const [localWithdraw, setLocalWithdraw] = useState([]);
+  useEffect(() => {
+    const WITHDRAW_HISTORY = JSON.parse(
+      localStorage.getItem("withdrawHistory")
+    );
+    if (WITHDRAW_HISTORY) setLocalWithdraw(WITHDRAW_HISTORY);
+  }, []);
+  const currentUser = localWithdraw.filter((current) => {
     return current.user === LOCAL_SIGNED_IN_DATA.username;
   });
   return (

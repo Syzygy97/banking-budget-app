@@ -54,7 +54,7 @@ export default function AdminPage() {
             );
           })}
         </ul>
-        <AdminPageSignup></AdminPageSignup>
+        <AdminPageSignup className="adminSignUp" />
       </div>
     </div>
   );

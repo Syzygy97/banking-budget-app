@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./DashboardHome.css";
 import DepositHistory from "../../History/Deposit History/DepositHistory";
 import WithdrawHistory from "../../History/Withdraw History/WithdrawHistory";
@@ -16,14 +16,24 @@ import {
 
 export default function DashboardHome() {
   const LOCAL_SIGNED_IN_DATA = JSON.parse(localStorage.getItem("signedInData"));
-  const DEPOSIT_HISTORY = JSON.parse(localStorage.getItem("depositHistory"));
-  console.log([DEPOSIT_HISTORY]);
-  const WITHDRAW_HISTORY = JSON.parse(localStorage.getItem("withdrawHistory"));
-  console.log([WITHDRAW_HISTORY]);
-  const currentUserDeposit = DEPOSIT_HISTORY.filter((current) => {
+  const [localDeposit, setLocalDeposit] = useState([]);
+  const [localWithdraw, setLocalWithdraw] = useState([]);
+
+  useEffect(() => {
+    const DEPOSIT_HISTORY = JSON.parse(localStorage.getItem("depositHistory"));
+    if (DEPOSIT_HISTORY) setLocalDeposit(DEPOSIT_HISTORY);
+  }, []);
+  useEffect(() => {
+    const WITHDRAW_HISTORY = JSON.parse(
+      localStorage.getItem("withdrawHistory")
+    );
+    if (WITHDRAW_HISTORY) setLocalWithdraw(WITHDRAW_HISTORY);
+  }, []);
+
+  const currentUserDeposit = localDeposit.filter((current) => {
     return current.user === LOCAL_SIGNED_IN_DATA.username;
   });
-  const currentUserWithdraw = WITHDRAW_HISTORY.filter((current) => {
+  const currentUserWithdraw = localWithdraw.filter((current) => {
     return current.user === LOCAL_SIGNED_IN_DATA.username;
   });
 

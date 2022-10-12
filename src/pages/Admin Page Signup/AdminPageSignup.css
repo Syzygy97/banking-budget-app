@@ -2,13 +2,16 @@
   height: 98%;
   width: 20vw;
   box-shadow: none;
-  /* margin-top: 2rem; */
 }
-
 .create-btn {
   margin-top: 3rem;
+  background-color: #fd841f;
+  color: #182747;
 }
-
+.create-btn:hover {
+  color: white;
+  font-weight: 700;
+}
 .signUpPageInput {
   width: 25rem;
 }

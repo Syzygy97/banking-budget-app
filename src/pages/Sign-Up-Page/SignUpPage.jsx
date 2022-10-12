@@ -23,11 +23,9 @@ export default function SignUpPage() {
   });
   const [userDatas, setUserDatas] = useState([]);
   const [local, setLocal] = useState([]);
-  // const LOCAL_USER_DATA = JSON.parse(localStorage.getItem("userKey"));
   const userListUsernames = local.map((user) => {
     return user.username;
   });
-  console.log("userdata", userData.username);
   useEffect(() => {
     const LOCAL_USER_DATA = JSON.parse(localStorage.getItem("userKey"));
     if (LOCAL_USER_DATA) setLocal(LOCAL_USER_DATA);
@@ -121,7 +119,6 @@ export default function SignUpPage() {
       required: true,
     },
   ];
-  console.log(userListUsernames);
   const handleSignUpSubmit = (e) => {
     e.preventDefault();
     const newUserData = {
@@ -137,7 +134,6 @@ export default function SignUpPage() {
     };
     if (userListUsernames.some((item) => item === userData.username)) {
       setIsError(true);
-      console.log("failed");
       return;
     } else {
       setUserData({

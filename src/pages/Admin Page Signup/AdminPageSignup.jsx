@@ -149,25 +149,13 @@ export default function AdminPageSignup() {
     setUserData({ ...userData, [e.target.name]: e.target.value });
   };
 
-  const navigateToLandingPage = (e) => {
-    e.preventDefault();
-    navigate("/");
-  };
-
   useEffect(() => {
     const localUserData = JSON.parse(localStorage.getItem("userKey"));
     if (localUserData) setUserDatas(localUserData);
   }, []);
 
   return (
-    // <div className="admin-create">
     <div className="signUpInputsContainer">
-      {/* <img
-        className="signUpLogo"
-        src={digilogo2}
-        alt="logo"
-        onClick={navigateToLandingPage}
-      ></img> */}
       <form className="signUpInputs">
         {dataInputs.map((input) => (
           <Inputs
@@ -178,11 +166,14 @@ export default function AdminPageSignup() {
             onChange={onChange}
           />
         ))}
-        <button className="create-btn" type="submit" onClick={handleSignUpSubmit}>
+        <button
+          className="create-btn"
+          type="submit"
+          onClick={handleSignUpSubmit}
+        >
           Create
         </button>
       </form>
     </div>
-    // </div>
   );
 }

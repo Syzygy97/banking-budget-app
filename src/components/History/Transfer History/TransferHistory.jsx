@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./TransferHistory.css";
 
 export default function TransferHistory() {
-  const TRANSFER_HISTORY = JSON.parse(localStorage.getItem("transferHistory"));
+  // const TRANSFER_HISTORY = JSON.parse(localStorage.getItem("transferHistory"));
   const LOCAL_SIGNED_IN_DATA = JSON.parse(localStorage.getItem("signedInData"));
-  const currentUser = TRANSFER_HISTORY.filter((current) => {
+  const [localTransfer, setLocalTransfer] = useState([]);
+  useEffect(() => {
+    const TRANSFER_HISTORY = JSON.parse(
+      localStorage.getItem("transferHistory")
+    );
+    if (TRANSFER_HISTORY) setLocalTransfer(TRANSFER_HISTORY);
+  }, []);
+  const currentUser = localTransfer.filter((current) => {
     return current.user === LOCAL_SIGNED_IN_DATA.username;
   });
   return (

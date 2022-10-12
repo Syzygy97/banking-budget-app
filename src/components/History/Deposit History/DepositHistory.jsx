@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./DepositHistory.css";
 
 export default function DepositHistory(props) {
-  const DEPOSIT_HISTORY = JSON.parse(localStorage.getItem("depositHistory"));
+  // const DEPOSIT_HISTORY_ADMIN = JSON.parse(
+  //   localStorage.getItem("depositHistory")
+  // );
   const LOCAL_SIGNED_IN_DATA = JSON.parse(localStorage.getItem("signedInData"));
-  const currentUser = DEPOSIT_HISTORY.filter((current) => {
+  const [localDeposit, setLocalDeposit] = useState([]);
+  useEffect(() => {
+    const DEPOSIT_HISTORY = JSON.parse(localStorage.getItem("depositHistory"));
+    if (DEPOSIT_HISTORY) setLocalDeposit(DEPOSIT_HISTORY);
+  }, []);
+  const currentUser = localDeposit.filter((current) => {
     return current.user === LOCAL_SIGNED_IN_DATA.username;
   });
   return (
