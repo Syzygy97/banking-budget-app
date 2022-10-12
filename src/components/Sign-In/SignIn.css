@@ -72,6 +72,7 @@ h2.invalid {
 .userAccessButtons {
   margin-bottom: 3em;
 }
+
 .signInBtn-enabled {
   background-color: #182747;
   color: #fff;
@@ -79,6 +80,7 @@ h2.invalid {
   opacity: 1;
   transition: opacity 300ms ease-in;
 }
+
 .signInBtn-disabled {
   background-color: #182747;
   color: #fff;
@@ -86,6 +88,8 @@ h2.invalid {
   opacity: 0.3;
   transition: opacity 300ms ease-in;
 }
+
 .signInBtn-enabled:hover {
   color: #fd841f;
 }
+

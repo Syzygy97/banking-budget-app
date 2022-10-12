@@ -12,6 +12,13 @@ function Expense() {
   const [editAmount, setEditAmount] = useState("");
   const [editTitle, setEditTitle] = useState("");
 
+  // useEffect(() => {
+  //   if (localStorage.getItem("expenses")) {
+  //     const storedList = JSON.parse(localStorage.getItem("expenses"));
+  //     setExpenses(storedList);
+  //   }
+  // }, []);
+
   const userExpenses = JSON.parse(localStorage.getItem("expenses"));
 
   const addExpense = () => {
@@ -70,6 +77,7 @@ function Expense() {
             type="number"
             value={expense}
             className="user-input"
+            min="0"
             onChange={(e) => setExpense(e.target.value)}
           />
         </label>
@@ -99,19 +107,20 @@ function Expense() {
         {expenses.map((expense) => (
           <React.Fragment key={expense.id}>
             <div className="user-expense-container">
-              <h2 className="user-expense-amount">
+              <div className="user-expense-amount">
                 {editing === expense.id ? (
                   <input
                     className="input-edit"
                     type="text"
                     value={editAmount}
+                    min="0"
                     onChange={(e) => setEditAmount(e.target.value)}
                   />
                 ) : (
-                  <span>₱{parseFloat(expense.amount).toFixed(2)}</span>
+                  <p className="input-result">₱{expense.amount}</p>
                 )}
-              </h2>
-              <h2 className="user-expense-amount">
+              </div>
+              <div className="user-expense-amount">
                 {editing === expense.id ? (
                   <input
                     className="input-edit"
@@ -121,9 +130,9 @@ function Expense() {
                     onChange={(e) => setEditTitle(e.target.value)}
                   />
                 ) : (
-                  <span>{expense.title}</span>
+                  <p className="input-result">{expense.title}</p>
                 )}
-              </h2>
+              </div>
               <div className="user-expense-delete-container">
                 <div className="user-expense-buttons">
                   <button className="user-expense-edit">
@@ -135,14 +144,12 @@ function Expense() {
                         onClick={() => handleUpdate(expense)}
                       />
                     ) : (
-                      <button className="user-expense-edit">
-                        <img
-                          className="edit-logo"
-                          src={edit}
-                          alt="pencil logo"
-                          onClick={() => handleEdit(expense)}
-                        />
-                      </button>
+                      <img
+                        className="edit-logo"
+                        src={edit}
+                        alt="pencil logo"
+                        onClick={() => handleEdit(expense)}
+                      />
                     )}
                   </button>
                   <button

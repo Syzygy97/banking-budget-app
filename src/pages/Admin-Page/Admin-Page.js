@@ -1,7 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
+import SignUpPage from "../Sign-Up-Page/SignUpPage";
 import "./Admin-Page.css";
 
 export default function AdminPage() {
+  // const [newUser, setNewUser] = useState({
+  //   firstName: "",
+  //   middleName: "",
+  //   lastName: "",
+  //   username: "",
+  //   email: "",
+  //   password: "",
+  //   confirmPassword: "",
+  //   balance: "",
+  // })
+  // const [users, setUsers] = useState([])
+
   const dataName = [
     {
       username: "Pot",
@@ -15,6 +28,26 @@ export default function AdminPage() {
     },
   ];
 
+  // const addUser = () => {
+  //   if (newUser) {
+  //     const createUser = {
+  //       id: new Date().getTime().toString(),
+  //       firstName: ,
+  //       middleName: ,
+  //       lastName: ,
+  //       email: ,
+  //       username: ,
+  //     };
+  //     setExpenses([...expenses, newExpense]);
+  //     localStorage.setItem(
+  //       "expenses",
+  //       JSON.stringify([...expenses, newExpense])
+  //     );
+  //     setExpense("");
+  //     setParticular("");
+  //   }
+  // };
+
   return (
     <div className="admin-header">
       <div className="header-holder">
@@ -23,11 +56,11 @@ export default function AdminPage() {
         <button className="log-out-btn">LOG OUT</button>
       </div>
       <div className="admin-data-holder">
-        <div className="content-list">
+        {/* <div className="content-list">
           <p className="name">Name</p>
           <p className="balance">Balance</p>
           <p></p>
-        </div>
+        </div> */}
         <ul className="admin-list">
           {dataName.map((user) => {
             return (
@@ -39,6 +72,7 @@ export default function AdminPage() {
             );
           })}
         </ul>
+        <SignUpPage></SignUpPage>
       </div>
     </div>
   );
